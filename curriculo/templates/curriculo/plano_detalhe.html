@@ -39,12 +39,17 @@
 <body>
     <header class="header"> <div class="logo">Plano Mestre</div> <div class="user-menu"> <a href="{% url 'gerador' %}">Voltar ao Gerador</a> </div> </header>
     <main class="container">
-        <div class="action-bar"> <h1>Plano de Aula: {{ plano.tema_aula }}</h1> <div class="buttons"> <a href="{% url 'gerador' %}" class="btn-back">Novo Plano</a> <a href="{% url 'gerar_pdf' plano.id %}" target="_blank" class="btn-pdf">Baixar PDF Oficial</a> </div> </div>
-        <div class="meta-grid"> <div class="meta-card"> <h3>Metodologia Geral</h3> <p>{{ plano.conteudo_gerado.metodologia|default:"N/A" }}</p> </div> <div class="meta-card"> <h3>Recursos Didáticos Gerais</h3> <p>{{ plano.conteudo_gerado.recursos_didaticos|default:"N/A" }}</p> </div> <div class="meta-card"> <h3>Avaliação Semanal</h3> <p>{{ plano.conteudo_gerado.avaliacao|default:"N/A" }}</p> </div> </div>
+        <div class="action-bar"> <h1>Plano de Aula Consolidado: {{ plano.tema_aula|default:"Semana" }}</h1> <div class="buttons"> <a href="{% url 'gerador' %}" class="btn-back">Novo Plano</a> <a href="{% url 'gerar_pdf' plano.id %}" target="_blank" class="btn-pdf">Baixar PDF Oficial</a> </div> </div>
+        <div class="meta-grid">
+            <div class="meta-card"> <h3>Metodologia Geral</h3> <p>{{ plano.conteudo_gerado.metodologia|default:"N/A" }}</p> </div>
+            <div class="meta-card"> <h3>Recursos Didáticos Gerais</h3> <p>{{ plano.conteudo_gerado.recursos_didaticos|default:"N/A" }}</p> </div>
+            <div class="meta-card"> <h3>Avaliação Semanal</h3> <p>{{ plano.conteudo_gerado.avaliacao|default:"N/A" }}</p> </div>
+        </div>
 
         <div class="plan-content">
-            <h2>Desenvolvimento Semanal (RCRO)</h2>
-            {% with plano.conteudo_gerado as plano_dia %}
+            <h2>Desenvolvimento Semanal Consolidado (RCRO)</h2>
+            {% with plano.conteudo_gerado as plano_dia %} {# Acessa o dicionário principal #}
+            {# Acessa diretamente as chaves de cada dia #}
             <div class="day-section">
                 <h3>Segunda-feira</h3>
                 <p><strong>Eixo Temático:</strong> {{ plano_dia.segunda.eixo_tematico|default:"N/A" }}</p>
@@ -79,6 +84,13 @@
                 <p><strong>Habilidades (RCRO):</strong> {{ plano_dia.sexta.habilidades|default:"N/A" }}</p>
                 <p><strong>Objeto do Conhecimento:</strong> {{ plano_dia.sexta.objeto_conhecimento|default:"N/A" }}</p>
                 <p><strong>Rotina:</strong> {{ plano_dia.sexta.rotina|default:"N/A" }}</p>
+            </div>
+             <div class="day-section"> {# Seção para Sábado #}
+                <h3>Sábado</h3>
+                <p><strong>Eixo Temático:</strong> {{ plano_dia.sabado.eixo_tematico|default:"N/A" }}</p>
+                <p><strong>Habilidades (RCRO):</strong> {{ plano_dia.sabado.habilidades|default:"N/A" }}</p>
+                <p><strong>Objeto do Conhecimento:</strong> {{ plano_dia.sabado.objeto_conhecimento|default:"N/A" }}</p>
+                <p><strong>Rotina:</strong> {{ plano_dia.sabado.rotina|default:"N/A" }}</p>
             </div>
             {% endwith %}
         </div>

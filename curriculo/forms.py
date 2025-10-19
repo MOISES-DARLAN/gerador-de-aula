@@ -1,18 +1,12 @@
 from django import forms
 from .models import ComponenteCurricular, PerfilProfessor, AreaDoConhecimento
 
-
-# Formulário do gerador REVERTIDO para um componente
+# Formulário do gerador REESTRUTURADO para receber JSON do frontend
 class GeradorPlanoForm(forms.Form):
-    # Campo único de componente curricular
-    componente_curricular = forms.ModelChoiceField(
-        queryset=ComponenteCurricular.objects.all().order_by('nome'),
-        label="Componente Curricular (Disciplina)",
-        empty_label="Selecione uma disciplina",
-        widget=forms.Select(attrs={'class': 'form-input'})  # Revertido de SelectMultiple
-    )
+    # Campo oculto para receber a estrutura JSON montada pelo JavaScript
+    componentes_temas_json = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-    # Campos restantes
+    # Campos gerais que permanecem
     serie = forms.ChoiceField(
         label="Série/Ano",
         choices=[
@@ -25,27 +19,23 @@ class GeradorPlanoForm(forms.Form):
         ],
         widget=forms.Select(attrs={'class': 'form-input'})
     )
-    tema_aula = forms.CharField(
-        label="Tema da Aula", max_length=200,
-        widget=forms.TextInput(attrs={'placeholder': 'Ex: Ciclo da Água', 'class': 'form-input'})
-    )
+    # Tema geral foi removido, pois agora é por componente/dia
     contexto = forms.CharField(
         label="Contexto Adicional (Opcional)", required=False,
-        widget=forms.Textarea(
-            attrs={'placeholder': 'Ex: Focar em atividades práticas...', 'class': 'form-textarea', 'rows': 4})
+        widget=forms.Textarea(attrs={'placeholder': 'Instruções gerais para a IA...', 'class': 'form-textarea', 'rows': 4})
     )
 
-
-# Formulário do Perfil (versão anterior já estava correta)
+# --- Formulários inalterados ---
 class PerfilProfessorForm(forms.ModelForm):
     class Meta:
         model = PerfilProfessor
         fields = ['nome_completo', 'escola', 'turma_padrao', 'turno_padrao', 'duracao_padrao', 'espaco_padrao']
+        # ... widgets e labels existentes ...
         widgets = {
             'nome_completo': forms.TextInput(attrs={'class': 'form-input'}),
             'escola': forms.TextInput(attrs={'class': 'form-input'}),
             'turma_padrao': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Ex: 5º B'}),
-            'turno_padrao': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Ex: 2 (para Vespertino)'}),
+            'turno_padrao': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Ex: 2 (Vespertino)'}),
             'duracao_padrao': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Ex: 4 horas'}),
             'espaco_padrao': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Ex: Sala e pátio escolar'}),
         }
@@ -55,8 +45,6 @@ class PerfilProfessorForm(forms.ModelForm):
             'duracao_padrao': 'Duração Padrão da Aula', 'espaco_padrao': 'Espaço Padrão de Aula',
         }
 
-
-# Formulários CRUD (versão anterior já estava correta)
 class AreaForm(forms.ModelForm):
     class Meta:
         model = AreaDoConhecimento
@@ -64,11 +52,9 @@ class AreaForm(forms.ModelForm):
         widgets = {'nome': forms.TextInput(attrs={'class': 'form-input'})}
         labels = {'nome': 'Nome da Área do Conhecimento'}
 
-
 class ComponenteForm(forms.ModelForm):
     class Meta:
         model = ComponenteCurricular
         fields = ['nome', 'area']
-        widgets = {'nome': forms.TextInput(attrs={'class': 'form-input'}),
-                   'area': forms.Select(attrs={'class': 'form-input'})}
+        widgets = {'nome': forms.TextInput(attrs={'class': 'form-input'}), 'area': forms.Select(attrs={'class': 'form-input'})}
         labels = {'nome': 'Nome do Componente (Disciplina)', 'area': 'Área do Conhecimento'}

@@ -1,0 +1,906 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$9qKrjKzO5msFLkNaLD5NHT$BlYfiS4Rwbi/2EWPkVIz4QB+VtBnDsvOVPAJT9TsJYU=",
+    "last_login": "2025-10-19T17:27:31.393Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-10-18T21:39:19Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "curriculo.areadoconhecimento",
+  "pk": 1,
+  "fields": {
+    "nome": "Linguagens e suas Tecnologias"
+  }
+},
+{
+  "model": "curriculo.areadoconhecimento",
+  "pk": 2,
+  "fields": {
+    "nome": "Matemática e suas Tecnologias"
+  }
+},
+{
+  "model": "curriculo.areadoconhecimento",
+  "pk": 3,
+  "fields": {
+    "nome": "Ciências da Natureza e suas Tecnologias"
+  }
+},
+{
+  "model": "curriculo.areadoconhecimento",
+  "pk": 4,
+  "fields": {
+    "nome": "Ciências Humanas e Sociais Aplicada"
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 1,
+  "fields": {
+    "nome": "Língua Portuguesa",
+    "area": 1
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 2,
+  "fields": {
+    "nome": "Artes",
+    "area": 1
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 3,
+  "fields": {
+    "nome": "Educação Física",
+    "area": 1
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 4,
+  "fields": {
+    "nome": "Língua Inglesa",
+    "area": 1
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 5,
+  "fields": {
+    "nome": "Matemática",
+    "area": 2
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 6,
+  "fields": {
+    "nome": "Biologia",
+    "area": 3
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 7,
+  "fields": {
+    "nome": "Física",
+    "area": 3
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 8,
+  "fields": {
+    "nome": "Química",
+    "area": 3
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 9,
+  "fields": {
+    "nome": "História",
+    "area": 4
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 10,
+  "fields": {
+    "nome": "Geografia",
+    "area": 4
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 11,
+  "fields": {
+    "nome": "Filosofia",
+    "area": 4
+  }
+},
+{
+  "model": "curriculo.componentecurricular",
+  "pk": 12,
+  "fields": {
+    "nome": "Sociologia",
+    "area": 4
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 1,
+  "fields": {
+    "autor": null,
+    "componente": 11,
+    "serie": "1ª Série do Ensino Médio",
+    "tema_aula": "A caverna de platão",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Ética\nPolítica\nEstética",
+        "habilidades": "EM13CHS101\nEM13CHS102\nEM13CHS501",
+        "objeto_conhecimento": "Mito da Caverna de Platão: interpretações e aplicações contemporâneas.\nConceitos de verdade, ilusão, realidade e conhecimento.",
+        "rotina": "Acolhida com música e reflexão sobre o dia.\nLeitura e discussão de um trecho adaptado do Mito da Caverna.\nBrainstorming: O que é realidade para você?"
+      },
+      "terca": {
+        "eixo_tematico": "Epistemologia\nHistória da Filosofia",
+        "habilidades": "EM13CHS103\nEM13CHS202\nEM13CHS502",
+        "objeto_conhecimento": "O pensamento de Platão e sua influência na filosofia ocidental.\nAs diferentes interpretações do Mito ao longo da história.",
+        "rotina": "Revisão do dia anterior.\nExposição dialogada sobre a vida e obra de Platão.\nAnálise de imagens e vídeos que representam o Mito."
+      },
+      "quarta": {
+        "eixo_tematico": "Ética\nPolítica",
+        "habilidades": "EM13CHS104\nEM13CHS301\nEM13CHS601",
+        "objeto_conhecimento": "As implicações éticas e políticas do Mito da Caverna.\nA relação entre conhecimento e poder.",
+        "rotina": "Debate: O Mito da Caverna e a sociedade contemporânea.\nDivisão da turma em grupos.\nCada grupo apresenta um problema social atual relacionado ao mito."
+      },
+      "quinta": {
+        "eixo_tematico": "Estética\nComunicação",
+        "habilidades": "EM13CHS205\nEM13CHS401\nEM13CHS602",
+        "objeto_conhecimento": "A dimensão estética do Mito da Caverna.\nComo o Mito pode ser representado em diferentes linguagens artísticas.",
+        "rotina": "Apresentação dos problemas sociais pelos grupos.\nDiscussão em plenária.\nIntrodução à atividade de produção artística."
+      },
+      "sexta": {
+        "eixo_tematico": "Criatividade\nExpressão",
+        "habilidades": "EM13CHS302\nEM13CHS503\nEM13CHS603",
+        "objeto_conhecimento": "Produção de trabalhos artísticos inspirados no Mito da Caverna e nos problemas sociais discutidos.",
+        "rotina": "Tempo para produção artística (desenho, colagem, poesia, música, etc.).\nSocialização dos trabalhos.\nAvaliação formativa da semana."
+      },
+      "metodologia": "A metodologia será baseada na problematização, na discussão em grupo e na produção artística. A exposição dialogada será utilizada para apresentar os conceitos filosóficos, sempre buscando conectar o conteúdo com a realidade dos alunos. O debate e a análise de diferentes mídias (imagens, vídeos) serão utilizados para estimular o pensamento crítico e a reflexão. A produção artística será uma forma de expressão e de aprofundamento do tema.",
+      "recursos_didaticos": "Textos adaptados do Mito da Caverna, imagens, vídeos, projetor, materiais para produção artística (papel, lápis de cor, canetas, tesoura, cola, revistas, jornais, etc.), instrumentos musicais (opcional).",
+      "avaliacao": "A avaliação será formativa e contínua, levando em consideração a participação dos alunos nas discussões, a qualidade dos trabalhos produzidos e a capacidade de relacionar o Mito da Caverna com a realidade. A autoavaliação e a avaliação entre pares também serão incentivadas."
+    },
+    "data_criacao": "2025-10-18T21:58:18.716Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 2,
+  "fields": {
+    "autor": null,
+    "componente": 4,
+    "serie": "1ª Série do Ensino Médio",
+    "tema_aula": "to be",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Leitura\nOralidade",
+        "habilidades": "EM13LGG101\nEM13LGG102\nEM13LGG402",
+        "objeto_conhecimento": "Present Simple vs. Present Continuous\nVerbo 'to be' (revisão)",
+        "rotina": "Acolhida e revisão do conteúdo da semana anterior (5 min)\nApresentação do tema da semana: 'to be' em diferentes contextos (10 min)\nLeitura de um texto curto (e.g., biografia simples) utilizando o 'to be' (15 min)\nDiscussão em grupo sobre o uso do 'to be' no texto (15 min)"
+      },
+      "terca": {
+        "eixo_tematico": "Escrita\nAnálise Linguística/Semiótica",
+        "habilidades": "EM13LGG301\nEM13LGG202\nEM13LGG601",
+        "objeto_conhecimento": "Formas afirmativa, negativa e interrogativa do 'to be'\nContrações do 'to be'",
+        "rotina": "Revisão rápida do dia anterior (5 min)\nExplicação formal das formas afirmativa, negativa e interrogativa do 'to be' (20 min)\nExercícios de fixação escritos: completar frases, transformar frases afirmativas em negativas e interrogativas (20 min)"
+      },
+      "quarta": {
+        "eixo_tematico": "Oralidade\nAnálise Linguística/Semiótica",
+        "habilidades": "EM13LGG103\nEM13LGG401",
+        "objeto_conhecimento": "Pronomes pessoais\nConcordância verbal com o 'to be'",
+        "rotina": "Revisão rápida do dia anterior (5 min)\nPrática oral: perguntas e respostas utilizando o 'to be' (e.g., What's your name? Where are you from?) (20 min)\nJogo de role-play: os alunos se apresentam utilizando o 'to be' e pronomes pessoais (20 min)"
+      },
+      "quinta": {
+        "eixo_tematico": "Leitura\nEscrita",
+        "habilidades": "EM13LGG201\nEM13LGG303",
+        "objeto_conhecimento": "Descrições pessoais utilizando o 'to be'\nVocabulário relacionado a características físicas e personalidade",
+        "rotina": "Revisão rápida do dia anterior (5 min)\nLeitura de descrições de personagens famosos, focando no uso do 'to be' (15 min)\nAtividade de escrita: os alunos escrevem uma descrição de si mesmos ou de um colega utilizando o 'to be' e vocabulário descritivo (25 min)"
+      },
+      "sexta": {
+        "eixo_tematico": "Todas",
+        "habilidades": "Todas da semana",
+        "objeto_conhecimento": "Revisão geral do 'to be' em todos os contextos aprendidos",
+        "rotina": "Revisão geral da semana através de atividades interativas (20 min)\nQuiz online ou jogo de perguntas e respostas sobre o 'to be' (20 min)\nFeedback e esclarecimento de dúvidas (5 min)"
+      },
+      "metodologia": "A metodologia utilizada será uma abordagem comunicativa, com foco na prática da língua inglesa em contextos significativos. As aulas serão dinâmicas e interativas, com atividades que envolvam leitura, escrita, oralidade e análise linguística. Serão utilizados recursos audiovisuais e tecnológicos para tornar o aprendizado mais interessante e eficaz.",
+      "recursos_didaticos": "Quadro branco\nCanetas\nLivro didático\nTextos impressos\nProjetor (opcional)\nComputador com acesso à internet\nQuiz online (e.g., Kahoot, Quizizz)",
+      "avaliacao": "A avaliação será contínua e formativa, levando em consideração a participação dos alunos nas atividades, a qualidade dos trabalhos escritos e orais, e o desempenho no quiz final. Será dada ênfase à capacidade dos alunos de utilizar o 'to be' corretamente em diferentes contextos comunicativos."
+    },
+    "data_criacao": "2025-10-18T22:32:59.467Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 3,
+  "fields": {
+    "autor": null,
+    "componente": 4,
+    "serie": "1ª Série do Ensino Médio",
+    "tema_aula": "verbo to be",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Leitura\nOralidade\nEscrita",
+        "habilidades": "EM13LGG101\nEM13LGG102\nEM13LGG401",
+        "objeto_conhecimento": "O verbo 'to be': formas e usos no presente.\nVocabulário básico para apresentação pessoal.\nTextos curtos: identificação de informações básicas.",
+        "rotina": "Acolhida e revisão do vocabulário básico (saudações, apresentação pessoal).\nLeitura de um texto curto com exemplos do verbo 'to be'.\nExplicação gramatical do verbo 'to be' (afirmativa, negativa, interrogativa) no presente.\nExercícios de fixação: completar frases, transformar frases."
+      },
+      "terca": {
+        "eixo_tematico": "Leitura\nOralidade",
+        "habilidades": "EM13LGG101\nEM13LGG201\nEM13LGG402",
+        "objeto_conhecimento": "O verbo 'to be': formas e usos no passado (was/were).\nVocabulário relacionado a eventos passados.\nCompreensão oral: identificação do verbo 'to be' em contextos informais.",
+        "rotina": "Revisão do verbo 'to be' no presente.\nApresentação do verbo 'to be' no passado (was/were).\nExemplos de uso em frases e textos curtos.\nExercícios de fixação: completar frases, transformar frases (presente para passado).\nAtividade oral: perguntas e respostas sobre o passado (usando 'was/were')."
+      },
+      "quarta": {
+        "eixo_tematico": "Escrita\nAnálise Linguística",
+        "habilidades": "EM13LGG102\nEM13LGG205\nEM13LGG403",
+        "objeto_conhecimento": "Revisão e consolidação do verbo 'to be' (presente e passado).\nProdução textual: descrição de pessoas e lugares.\nConcordância verbal com o verbo 'to be'.",
+        "rotina": "Correção dos exercícios da aula anterior.\nRevisão geral do verbo 'to be' (presente e passado) com foco na concordância.\nAtividade de escrita: descrever um colega de classe (aparência, personalidade) usando o verbo 'to be'.\nCompartilhamento das descrições."
+      },
+      "quinta": {
+        "eixo_tematico": "Leitura\nOralidade",
+        "habilidades": "EM13LGG103\nEM13LGG301\nEM13LGG404",
+        "objeto_conhecimento": "Usos idiomáticos do verbo 'to be'.\nExpressões comuns com 'to be' (e.g., to be interested in, to be good at).\nDiálogos: simulação de situações cotidianas usando o verbo 'to be'.",
+        "rotina": "Apresentação de expressões idiomáticas com o verbo 'to be'.\nDiscussão sobre o significado e uso dessas expressões.\nExercícios de completar frases com as expressões.\nAtividade oral: simulação de diálogos em situações cotidianas (apresentações, interesses, habilidades)."
+      },
+      "sexta": {
+        "eixo_tematico": "Avaliação\nProdução",
+        "habilidades": "EM13LGG104\nEM13LGG401\nEM13LGG405",
+        "objeto_conhecimento": "Revisão geral do conteúdo da semana.\nAvaliação formativa: exercícios de aplicação e produção textual.\nFeedback individual e coletivo.",
+        "rotina": "Revisão geral do verbo 'to be' (presente, passado, usos idiomáticos).\nAvaliação escrita: exercícios de múltipla escolha, completar frases e produção de um parágrafo sobre si mesmo ou um amigo.\nCorreção e feedback individual e coletivo.\nAtividade lúdica (opcional): jogo de tabuleiro ou quiz sobre o verbo 'to be'."
+      },
+      "metodologia": "A metodologia será baseada em uma abordagem comunicativa, priorizando a interação entre os alunos e a aplicação prática do conteúdo. Serão utilizados textos autênticos, atividades lúdicas e simulações para tornar o aprendizado mais dinâmico e significativo. A gramática será abordada de forma contextualizada, a partir da análise de exemplos e da prática de exercícios. O feedback será constante, visando o desenvolvimento da autonomia dos alunos.",
+      "recursos_didaticos": "Livro didático\nQuadro branco\nPincel atômico\nTextos impressos\nImagens\nProjetor (opcional)\nMateriais para jogos (opcional)",
+      "avaliacao": "A avaliação será formativa e contínua, considerando a participação dos alunos nas atividades, a realização dos exercícios e a produção textual. A avaliação escrita (na sexta-feira) terá como objetivo verificar a compreensão e aplicação do conteúdo trabalhado durante a semana. O feedback será individual e coletivo, visando o desenvolvimento da autonomia e da capacidade de autoavaliação dos alunos."
+    },
+    "data_criacao": "2025-10-18T23:00:54.091Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 4,
+  "fields": {
+    "autor": null,
+    "componente": 4,
+    "serie": "1ª Série do Ensino Médio",
+    "tema_aula": "verbo to be",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Linguagens\nInteração e Colaboração",
+        "habilidades": "EM13LGG101\nEM13LGG401",
+        "objeto_conhecimento": "Verbo to be (presente): formas afirmativa, negativa e interrogativa\nPronomes pessoais",
+        "rotina": "Acolhida e revisão da aula anterior (5 min)\nApresentação do tema da semana: Verbo to be (10 min)\nExplicação das formas afirmativa, negativa e interrogativa com exemplos (20 min)\nExercícios de fixação escritos (15 min)"
+      },
+      "terca": {
+        "eixo_tematico": "Linguagens\nComunicação e Cultura",
+        "habilidades": "EM13LGG102\nEM13LGG201",
+        "objeto_conhecimento": "Verbo to be (presente): usos\nVocabulário relacionado a apresentações pessoais",
+        "rotina": "Correção dos exercícios da aula anterior (10 min)\nExplicação dos diferentes usos do verbo to be (descrições, identificação, etc.) com exemplos (20 min)\nAtividade oral: Apresentações pessoais utilizando o verbo to be (20 min)\nFeedback individual e coletivo (10 min)"
+      },
+      "quarta": {
+        "eixo_tematico": "Linguagens\nInvestigação e Compreensão",
+        "habilidades": "EM13LGG301\nEM13LGG601",
+        "objeto_conhecimento": "Verbo to be (passado): formas afirmativa, negativa e interrogativa\nConectores de tempo simples",
+        "rotina": "Revisão rápida do verbo to be no presente (5 min)\nApresentação do verbo to be no passado (was/were): formas e usos (20 min)\nComparação entre o uso no presente e no passado (10 min)\nExercícios de transformação de frases do presente para o passado (25 min)"
+      },
+      "quinta": {
+        "eixo_tematico": "Linguagens\nInteração e Colaboração",
+        "habilidades": "EM13LGG103\nEM13LGG402",
+        "objeto_conhecimento": "Verbo to be (passado): usos\nExpressões de tempo no passado",
+        "rotina": "Correção dos exercícios da aula anterior (10 min)\nDiscussão sobre o uso do verbo to be no passado para descrever eventos e situações (15 min)\nAtividade em grupo: Criação de pequenas histórias utilizando o verbo to be no passado (25 min)\nApresentação das histórias para a turma (10 min)"
+      },
+      "sexta": {
+        "eixo_tematico": "Linguagens\nComunicação e Cultura",
+        "habilidades": "EM13LGG202\nEM13LGG502",
+        "objeto_conhecimento": "Revisão geral do verbo to be (presente e passado)\nConstrução de identidade através da linguagem",
+        "rotina": "Jogo de revisão: Kahoot ou similar com perguntas sobre o verbo to be (20 min)\nDiscussão sobre a importância do verbo to be para a comunicação e a construção de identidade (15 min)\nAtividade de produção textual: Escrever um parágrafo sobre si mesmo no presente e outro sobre o passado, utilizando o verbo to be (25 min)"
+      },
+      "metodologia": "A metodologia utilizada será ativa e participativa, com foco na interação entre os alunos e na aplicação prática do conteúdo. Serão utilizados exemplos contextualizados e atividades que promovam a reflexão sobre o uso da língua inglesa no cotidiano. A abordagem comunicativa será priorizada, incentivando a produção oral e escrita dos alunos. Jogos e atividades lúdicas serão utilizados para tornar o aprendizado mais dinâmico e engajador.",
+      "recursos_didaticos": "Quadro branco, pincel, projetor, computador, caixas de som, textos impressos, jogos online (Kahoot, Quizizz), dicionários, materiais de áudio e vídeo, flashcards.",
+      "avaliacao": "A avaliação será contínua e formativa, considerando a participação dos alunos nas atividades propostas, a correção dos exercícios, a produção oral e escrita, e o desempenho no jogo de revisão. Será observado o progresso individual de cada aluno e a capacidade de aplicar o conhecimento adquirido em diferentes contextos. Ao final da semana, será realizada uma avaliação somativa (a depender do professor) para verificar a consolidação do aprendizado."
+    },
+    "data_criacao": "2025-10-18T23:16:59.867Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 5,
+  "fields": {
+    "autor": null,
+    "componente": 9,
+    "serie": "3ª Série do Ensino Médio",
+    "tema_aula": "Napoleão banapart",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Política\nEconomia\nCultura",
+        "habilidades": "EM13CHS101\nEM13CHS202\nEM13CHS301",
+        "objeto_conhecimento": "Revolução Francesa e o período Napoleônico: ascensão, consolidação e declínio do poder.\nImpacto das Guerras Napoleônicas na Europa e na América.\nO Congresso de Viena e a Restauração.",
+        "rotina": "Acolhida e apresentação do tema da semana: Napoleão Bonaparte e seu contexto histórico.\nLeitura e discussão de um trecho da Declaração dos Direitos do Homem e do Cidadão, relacionando-o com os ideais da Revolução Francesa e as ações de Napoleão.\nExibição de um breve vídeo introdutório sobre a vida de Napoleão."
+      },
+      "terca": {
+        "eixo_tematico": "Política\nSociedade\nEconomia",
+        "habilidades": "EM13CHS102\nEM13CHS203\nEM13CHS401",
+        "objeto_conhecimento": "O Consulado e o Império Napoleônico: características políticas, econômicas e sociais.\nO Bloqueio Continental e suas consequências.\nO expansionismo napoleônico e as resistências.",
+        "rotina": "Análise de mapas históricos para identificar o alcance do Império Napoleônico e as áreas de influência francesa.\nDebate sobre as causas e consequências do Bloqueio Continental, com foco em seus impactos no Brasil.\nEstudo de caso: a invasão da Península Ibérica e suas implicações para a América Latina."
+      },
+      "quarta": {
+        "eixo_tematico": "Política\nCultura\nHistória e Memória",
+        "habilidades": "EM13CHS103\nEM13CHS302\nEM13CHS601",
+        "objeto_conhecimento": "O legado napoleônico: o Código Civil, o sistema métrico decimal e a modernização da administração.\nAs Guerras Napoleônicas e a formação dos Estados Nacionais.\nAs representações de Napoleão na arte e na literatura.",
+        "rotina": "Discussão sobre o legado de Napoleão, com ênfase no Código Civil e sua influência no direito contemporâneo.\nAnálise comparativa de diferentes visões sobre Napoleão, a partir de fontes primárias e secundárias.\nAtividade de pesquisa: os alunos devem identificar exemplos de obras de arte e literatura que retratam Napoleão, analisando as diferentes perspectivas e interpretações."
+      },
+      "quinta": {
+        "eixo_tematico": "Política\nGeopolítica\nEconomia",
+        "habilidades": "EM13CHS204\nEM13CHS402\nEM13CHS502",
+        "objeto_conhecimento": "O Congresso de Viena e a Restauração: a tentativa de reorganização da Europa após Napoleão.\nO surgimento de novas ideologias: liberalismo, nacionalismo e socialismo.\nA Santa Aliança e a repressão aos movimentos revolucionários.",
+        "rotina": "Apresentação sobre o Congresso de Viena e a Restauração, destacando os objetivos das potências vencedoras e as consequências para a Europa.\nDebate sobre o surgimento das novas ideologias e seu papel nos movimentos revolucionários do século XIX.\nAnálise de documentos históricos: trechos de tratados do Congresso de Viena e manifestos de movimentos revolucionários."
+      },
+      "sexta": {
+        "eixo_tematico": "História e Memória\nPolítica\nCultura",
+        "habilidades": "EM13CHS602\nEM13CHS503\nEM13CHS303",
+        "objeto_conhecimento": "Napoleão na história do Brasil: a vinda da Família Real Portuguesa e o processo de independência.\nAs influências do Iluminismo e da Revolução Francesa no Brasil.\nDebate: Napoleão, herói ou vilão?",
+        "rotina": "Discussão sobre a vinda da Família Real Portuguesa para o Brasil, relacionando-a com a invasão napoleônica em Portugal.\nAnálise das influências do Iluminismo e da Revolução Francesa no processo de independência do Brasil.\nDebate final: os alunos devem apresentar argumentos a favor e contra a figura de Napoleão, considerando seus feitos e suas controvérsias. Elaboração de um texto dissertativo-argumentativo com a conclusão do debate."
+      },
+      "metodologia": "Aulas expositivas dialogadas, análise de documentos históricos, debates, estudo de caso, atividades de pesquisa e produção textual.",
+      "recursos_didaticos": "Livro didático,mapas históricos, vídeos,documentos históricos,projetor,internet,quadro branco,pilotos.",
+      "avaliacao": "A avaliação será contínua, considerando a participação dos alunos nas atividades propostas, a análise de documentos, a produção textual e o desempenho nos debates. Será dada ênfase à capacidade de análise crítica e à compreensão dos processos históricos relacionados ao período napoleônico. Avaliação escrita ao final da semana."
+    },
+    "data_criacao": "2025-10-18T23:24:59.020Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 6,
+  "fields": {
+    "autor": null,
+    "componente": 12,
+    "serie": "1ª Série do Ensino Médio",
+    "tema_aula": "capitalismo",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Mundo do Trabalho\nCultura e Sociedade",
+        "habilidades": "EM13CHS101\nEM13CHS102\nEM13CHS201",
+        "objeto_conhecimento": "Conceito de Capitalismo: Origens e Evolução\nCaracterísticas do Capitalismo: Propriedade Privada, Mercado, Lucro e Trabalho Assalariado\nGlobalização e Capitalismo",
+        "rotina": "Acolhida e apresentação do tema da semana: Capitalismo.\nLeitura e discussão de um texto introdutório sobre as origens do capitalismo (ex: trecho de um livro didático ou artigo).\nBrainstorming: O que os alunos já sabem sobre capitalismo? Anotar as ideias no quadro.\nIntrodução aos principais conceitos: propriedade privada, mercado, lucro e trabalho assalariado."
+      },
+      "terca": {
+        "eixo_tematico": "Mundo do Trabalho\nPolítica e Poder",
+        "habilidades": "EM13CHS202\nEM13CHS204\nEM13CHS401",
+        "objeto_conhecimento": "As Fases do Capitalismo: Comercial, Industrial e Financeiro\nAs Crises do Capitalismo\nCapitalismo e Desigualdade Social",
+        "rotina": "Revisão dos conceitos da aula anterior.\nApresentação das fases do capitalismo (comercial, industrial e financeiro) através de uma linha do tempo visual.\nDiscussão sobre as crises do capitalismo, utilizando exemplos históricos (ex: crise de 1929, crise de 2008).\nDebate sobre a relação entre capitalismo e desigualdade social. Apresentar dados estatísticos sobre distribuição de renda."
+      },
+      "quarta": {
+        "eixo_tematico": "Meio Ambiente\nCultura e Sociedade",
+        "habilidades": "EM13CHS301\nEM13CHS304\nEM13CHS503",
+        "objeto_conhecimento": "Capitalismo e Meio Ambiente: Exploração de Recursos Naturais e Impactos Ambientais\nConsumo e Capitalismo: A Cultura do Consumo\nO Capitalismo na Era Digital",
+        "rotina": "Exibição de um documentário curto ou vídeo sobre os impactos ambientais do capitalismo (desmatamento, poluição, etc.).\nDiscussão sobre a relação entre consumo e capitalismo: como a publicidade influencia o consumo? O que é consumismo?\nIntrodução ao capitalismo na era digital: e-commerce, redes sociais, inteligência artificial."
+      },
+      "quinta": {
+        "eixo_tematico": "Política e Poder\nEconomia",
+        "habilidades": "EM13CHS601\nEM13CHS602\nEM13CHS603",
+        "objeto_conhecimento": "O Papel do Estado no Capitalismo: Liberalismo, Estado de Bem-Estar Social e Neoliberalismo\nCapitalismo e Trabalho: Novas Formas de Trabalho (Uberização, Trabalho Remoto)\nO Capitalismo no Brasil",
+        "rotina": "Apresentação dos diferentes modelos de capitalismo: liberalismo, estado de bem-estar social e neoliberalismo.\nDiscussão sobre o papel do Estado na economia.\nDebate sobre as novas formas de trabalho no capitalismo: uberização, trabalho remoto. Quais são os desafios e oportunidades?\nAnálise do capitalismo no Brasil: características, desafios e perspectivas."
+      },
+      "sexta": {
+        "eixo_tematico": "Mundo do Trabalho\nCultura e Sociedade",
+        "habilidades": "EM13CHS101\nEM13CHS201\nEM13CHS402",
+        "objeto_conhecimento": "Revisão e Debate: Desafios e Perspectivas do Capitalismo no Século XXI\nApresentação e Discussão dos Trabalhos",
+        "rotina": "Revisão dos principais temas abordados durante a semana.\nDebate final: Quais são os desafios e perspectivas do capitalismo no século XXI? O capitalismo é sustentável? Existem alternativas ao capitalismo?\nApresentação e discussão dos trabalhos desenvolvidos pelos alunos (seminários, apresentações, etc.).\nFeedback individual e coletivo sobre o desempenho dos alunos."
+      },
+      "metodologia": "A metodologia será baseada em aulas expositivas dialogadas, com uso de recursos audiovisuais (vídeos, documentários, slides). Serão promovidos debates e discussões em grupo, incentivando a participação ativa dos alunos. Serão utilizados estudos de caso e exemplos práticos para ilustrar os conceitos teóricos. Ao final da semana, os alunos deverão apresentar um trabalho (seminário, apresentação, etc.) sobre um tema relacionado ao capitalismo.",
+      "recursos_didaticos": "Livro didático, projetor, computador, internet, vídeos, documentários, artigos de jornais e revistas, slides, quadro branco, pincel atômico",
+      "avaliacao": "A avaliação será contínua e formativa, levando em consideração a participação dos alunos nas aulas, o envolvimento nas atividades propostas e a qualidade do trabalho final. Serão utilizados instrumentos como observação, registro das discussões em sala de aula, análise dos trabalhos escritos e orais, e autoavaliação dos alunos."
+    },
+    "data_criacao": "2025-10-19T11:24:46.473Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 7,
+  "fields": {
+    "autor": 1,
+    "componente": 6,
+    "serie": "1ª Série do Ensino Médio",
+    "tema_aula": "genetica reprodutiva",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Processos Biológicos\nHereditariedade e Diversidade da Vida",
+        "habilidades": "EM13CNT203\nEM13CNT204",
+        "objeto_conhecimento": "Conceitos básicos de Genética: DNA, RNA, genes, cromossomos\nMendelismo: Leis de Mendel e suas aplicações",
+        "rotina": "Acolhimento e apresentação do tema da semana: Genética Reprodutiva.\nLeitura e discussão de um texto curto sobre a importância da genética na compreensão da hereditariedade.\nIntrodução aos conceitos básicos: DNA, RNA, genes e cromossomos. Utilização de modelos visuais (imagens, vídeos) para facilitar a compreensão."
+      },
+      "terca": {
+        "eixo_tematico": "Processos Biológicos\nHereditariedade e Diversidade da Vida",
+        "habilidades": "EM13CNT203\nEM13CNT204\nEM13CNT301",
+        "objeto_conhecimento": "Mendelismo: Leis de Mendel e suas aplicações\nTerminologia genética: genótipo, fenótipo, alelos dominantes e recessivos",
+        "rotina": "Revisão dos conceitos da aula anterior.\nApresentação das Leis de Mendel com exemplos práticos.\nResolução de exercícios simples sobre as Leis de Mendel, utilizando o quadro de Punnett.\nDiscussão sobre a importância da terminologia genética (genótipo, fenótipo, etc.)."
+      },
+      "quarta": {
+        "eixo_tematico": "Processos Biológicos\nHereditariedade e Diversidade da Vida\nSaúde",
+        "habilidades": "EM13CNT203\nEM13CNT204\nEM13CNT301\nEM13CNT306",
+        "objeto_conhecimento": "Herança ligada ao sexo\nSistema ABO e Fator Rh\nAnomalias cromossômicas",
+        "rotina": "Introdução ao conceito de herança ligada ao sexo, com exemplos como o daltonismo e a hemofilia.\nExplicação dos sistemas ABO e Rh de grupos sanguíneos, com discussão sobre a importância da tipagem sanguínea para transfusões.\nApresentação das principais anomalias cromossômicas, como a Síndrome de Down, abordando suas causas e características."
+      },
+      "quinta": {
+        "eixo_tematico": "Processos Biológicos\nHereditariedade e Diversidade da Vida\nSaúde",
+        "habilidades": "EM13CNT203\nEM13CNT204\nEM13CNT301\nEM13CNT306",
+        "objeto_conhecimento": "Aconselhamento genético\nDiagnóstico pré-natal\nEngenharia genética e suas aplicações",
+        "rotina": "Discussão sobre o aconselhamento genético e sua importância para famílias com histórico de doenças hereditárias.\nApresentação dos métodos de diagnóstico pré-natal, como a amniocentese e a ultrassonografia.\nIntrodução à engenharia genética e suas aplicações na medicina, agricultura e indústria. Debate sobre os aspectos éticos da engenharia genética."
+      },
+      "sexta": {
+        "eixo_tematico": "Processos Biológicos\nHereditariedade e Diversidade da Vida\nCiência, Tecnologia e Sociedade",
+        "habilidades": "EM13CNT203\nEM13CNT204\nEM13CNT301\nEM13CNT306\nEM13CNT101",
+        "objeto_conhecimento": "Revisão geral dos conceitos\nDiscussão sobre as implicações sociais e éticas da genética reprodutiva\nElaboração de um mapa conceitual sobre o tema",
+        "rotina": "Revisão geral dos conceitos abordados durante a semana, com foco nos pontos mais importantes.\nDebate sobre as implicações sociais e éticas da genética reprodutiva, como a seleção de embriões e o uso de testes genéticos.\nElaboração de um mapa conceitual individual ou em grupo, com o objetivo de sintetizar o conhecimento adquirido durante a semana."
+      },
+      "metodologia": "A metodologia será baseada em aulas expositivas dialogadas, resolução de exercícios, estudos de caso, discussões em grupo e utilização de recursos audiovisuais (vídeos, imagens, animações). Será dada ênfase à participação ativa dos alunos e à aplicação dos conceitos em situações do cotidiano. O professor atuará como mediador do processo de aprendizagem, incentivando a autonomia e o pensamento crítico dos alunos.",
+      "recursos_didaticos": "Quadro branco,canetas,projetor,computador,internet,livro didático,textos complementares,vídeos,modelos visuais (DNA, cromossomos),mapas conceituais.",
+      "avaliacao": "A avaliação será contínua e formativa, considerando a participação dos alunos nas atividades propostas, a resolução de exercícios, a elaboração do mapa conceitual e a demonstração de compreensão dos conceitos abordados. Será realizada uma avaliação escrita ao final da semana para verificar o aprendizado dos alunos."
+    },
+    "data_criacao": "2025-10-19T12:09:00.601Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 8,
+  "fields": {
+    "autor": 1,
+    "componente": 1,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "Analise linguistica",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Leitura\nEscrita\nOralidade\nAnálise Linguística/Semiótica",
+        "habilidades": "EF05LP01\nEF05LP02\nEF05LP09\nEF05LP12",
+        "objeto_conhecimento": "Convenções da escrita\nRelação entre grafemas e fonemas\nOrtografia\nConcordância verbal e nominal",
+        "rotina": "Acolhida com música e leitura de um trecho de livro.\nRodada de conversa sobre a leitura.\nRevisão da lição de casa.\nInício das atividades do dia."
+      },
+      "terca": {
+        "eixo_tematico": "Leitura\nAnálise Linguística/Semiótica",
+        "habilidades": "EF05LP15\nEF05LP17",
+        "objeto_conhecimento": "Pontuação\nSinonímia e antonímia",
+        "rotina": "Correção coletiva da atividade do dia anterior.\nLeitura de um texto informativo.\nDiscussão sobre o tema do texto.\nAtividades sobre pontuação e sinonímia/antonímia."
+      },
+      "quarta": {
+        "eixo_tematico": "Escrita\nAnálise Linguística/Semiótica",
+        "habilidades": "EF05LP19\nEF05LP20",
+        "objeto_conhecimento": "Flexão verbal (tempo, modo e pessoa)\nConcordância verbal",
+        "rotina": "Leitura e análise de frases.\nExplicação sobre flexão verbal.\nExercícios de fixação sobre concordância verbal e flexão verbal.\nProdução de frases utilizando diferentes tempos verbais."
+      },
+      "quinta": {
+        "eixo_tematico": "Oralidade\nAnálise Linguística/Semiótica",
+        "habilidades": "EF05LP22\nEF05LP23",
+        "objeto_conhecimento": "Variação linguística\nRegistros de língua",
+        "rotina": "Roda de conversa sobre diferentes sotaques e formas de falar.\nDiscussão sobre preconceito linguístico.\nProdução de um texto coletivo sobre a importância de respeitar as diferenças linguísticas.\nApresentação oral dos textos."
+      },
+      "sexta": {
+        "eixo_tematico": "Leitura\nEscrita\nAnálise Linguística/Semiótica",
+        "habilidades": "EF05LP03\nEF05LP11",
+        "objeto_conhecimento": "Coesão e coerência textuais\nRevisão textual",
+        "rotina": "Revisão dos conteúdos da semana.\nAtividade de produção textual com foco em coesão e coerência.\nRevisão dos textos produzidos pelos alunos.\nJogo de ortografia para fixar o conteúdo."
+      },
+      "metodologia": "A metodologia utilizada será baseada na interação entre os alunos, com atividades em grupo e individuais. Serão utilizados jogos, músicas e recursos visuais para tornar o aprendizado mais dinâmico e interessante. O professor atuará como mediador, auxiliando os alunos na construção do conhecimento e promovendo a reflexão sobre a língua portuguesa.",
+      "recursos_didaticos": "Livros didáticos, dicionários, cartolinas, canetas hidrográficas, computador, projetor, jogos de ortografia, textos diversos",
+      "avaliacao": "A avaliação será contínua e processual, levando em consideração a participação dos alunos nas atividades, a produção textual, a compreensão dos conteúdos e o desenvolvimento das habilidades propostas. Serão utilizados diferentes instrumentos de avaliação, como observação, registro, autoavaliação e provas."
+    },
+    "data_criacao": "2025-10-19T12:31:32.632Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 9,
+  "fields": {
+    "autor": 1,
+    "componente": null,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "genetica reprodutiva",
+    "conteudo_gerado": {
+      "segunda": [],
+      "terca": [],
+      "quarta": [],
+      "quinta": [],
+      "sexta": []
+    },
+    "data_criacao": "2025-10-19T12:46:04.466Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 10,
+  "fields": {
+    "autor": 1,
+    "componente": 6,
+    "serie": "1º Ano - Ensino Fundamental",
+    "tema_aula": "genetica reprodutiva",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Vida e Evolução",
+        "habilidades": "EM13CNT201, EM13CNT202",
+        "objeto_conhecimento": "Conceitos básicos de genética: DNA, genes, cromossomos. Reprodução assexuada e sexuada.",
+        "rotina": "Início da aula com uma roda de conversa sobre o que os alunos sabem sobre hereditariedade e características familiares. Apresentação dos conceitos básicos de DNA, genes e cromossomos através de vídeos e imagens. Atividade prática: montagem de um modelo simples de DNA utilizando materiais recicláveis."
+      },
+      "terca": {
+        "eixo_tematico": "Vida e Evolução",
+        "habilidades": "EM13CNT203, EM13CNT204",
+        "objeto_conhecimento": "Mecanismos de hereditariedade: Mendel e as leis da hereditariedade. Genótipo e fenótipo.",
+        "rotina": "Discussão sobre as leis de Mendel utilizando exemplos simples. Explicação da diferença entre genótipo e fenótipo. Exercícios de fixação sobre os conceitos abordados. Jogo interativo sobre hereditariedade."
+      },
+      "quarta": {
+        "eixo_tematico": "Matéria e Energia",
+        "habilidades": "EM13CNT101",
+        "objeto_conhecimento": "A importância da meiose na variabilidade genética.",
+        "rotina": "Apresentação do processo de meiose e sua importância para a variabilidade genética. Comparação entre mitose e meiose. Discussão sobre a relação entre meiose e hereditariedade. Simulação da meiose com materiais manipuláveis."
+      },
+      "quinta": {
+        "eixo_tematico": "Vida e Evolução",
+        "habilidades": "EM13CNT206",
+        "objeto_conhecimento": "Determinação do sexo e herança ligada ao sexo.",
+        "rotina": "Explicação sobre a determinação do sexo em humanos e outros animais. Discussão sobre herança ligada ao sexo, como o daltonismo e a hemofilia. Resolução de exercícios sobre herança ligada ao sexo. Debate sobre a importância do aconselhamento genético."
+      },
+      "sexta": {
+        "eixo_tematico": "Vida e Evolução",
+        "habilidades": "EM13CNT205, EM13CNT301",
+        "objeto_conhecimento": "Aplicações da genética na sociedade: diagnóstico de doenças hereditárias, terapia gênica, melhoramento genético.",
+        "rotina": "Apresentação das aplicações da genética na sociedade através de vídeos e notícias. Discussão sobre os aspectos éticos das aplicações da genética. Elaboração de um mapa conceitual sobre os temas abordados na semana. Apresentação dos trabalhos em grupo e feedback."
+      },
+      "metodologia": "A metodologia da semana será baseada em aulas expositivas dialogadas, atividades práticas, jogos interativos, resolução de exercícios, debates e elaboração de mapas conceituais. Serão utilizados diversos recursos didáticos para tornar as aulas mais dinâmicas e interessantes.",
+      "recursos_didaticos": "Livro didático, vídeos, imagens, materiais recicláveis, jogos interativos, computador, projetor, quadro branco, canetas hidrográficas, modelos de DNA.",
+      "avaliacao": "A avaliação será contínua e formativa, baseada na participação dos alunos nas atividades, na resolução dos exercícios, na elaboração do mapa conceitual e na apresentação dos trabalhos em grupo. Será realizada uma avaliação escrita ao final da semana para verificar a compreensão dos conceitos abordados."
+    },
+    "data_criacao": "2025-10-19T13:33:09.785Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 11,
+  "fields": {
+    "autor": 1,
+    "componente": 12,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "Plano Semanal Detalhado - 5º Ano - Ensino Fundamental",
+    "conteudo_gerado": {
+      "metodologia": "A semana será organizada com atividades que promovam a interação, a reflexão crítica e a aplicação prática dos conhecimentos. Serão utilizadas metodologias ativas, como a resolução de problemas, a discussão em grupo e a produção de materiais diversos. A ludicidade será um elemento presente em todas as atividades, visando tornar o aprendizado mais significativo e prazeroso.",
+      "recursos_didaticos": [
+        "Livro didático",
+        "Textos complementares",
+        "Imagens",
+        "Vídeos",
+        "Cartolinas",
+        "Pincéis atômicos",
+        "Tesouras",
+        "Cola",
+        "Materiais reciclados",
+        "Jogos",
+        "Computador com acesso à internet"
+      ],
+      "avaliacao": "A avaliação será contínua e formativa, considerando a participação dos alunos nas atividades, a produção de materiais, a resolução de problemas e a capacidade de argumentação. Serão utilizados diferentes instrumentos de avaliação, como observação, registros, portfólios e autoavaliação. O objetivo é acompanhar o processo de aprendizagem de cada aluno e identificar as necessidades de intervenção.",
+      "segunda": [
+        {
+          "componente": "Sociologia",
+          "tema_especifico": "karmarks",
+          "eixo_tematico": "Mundo do Trabalho; Cultura e Sociedade; Cidadania e Democracia.",
+          "habilidades": "EF05CI06RO; EF05GE10RO; EF05HI09RO",
+          "objeto_conhecimento": "Trabalho e modos de vida; Relações de produção e consumo; Desigualdades sociais.",
+          "rotina_detalhada": "Inicie a aula com uma roda de conversa para introduzir o conceito de trabalho e sua importância na sociedade. Apresente a biografia de Karl Marx e seus principais conceitos, como luta de classes, mais-valia e alienação, adaptando a linguagem para o nível dos alunos do 5º ano. Promova um debate sobre as diferentes formas de trabalho existentes na comunidade e como elas influenciam a vida das pessoas. Divida a turma em grupos e peça para cada grupo criar um cartaz representando uma forma de trabalho diferente e sua importância. Finalize a aula com uma reflexão sobre a importância do trabalho para a construção de uma sociedade mais justa e igualitária."
+        },
+        {
+          "componente": "Língua Portuguesa",
+          "tema_especifico": "preposições",
+          "eixo_tematico": "Leitura; Escrita; Oralidade; Análise Linguística/Semiótica.",
+          "habilidades": "EF35LP03; EF35LP04; EF35LP21; EF35LP30",
+          "objeto_conhecimento": "Morfossintaxe; Relações entre palavras e textos; Variação linguística.",
+          "rotina_detalhada": "Comece a aula relembrando o conceito de palavras e suas funções. Introduza as preposições como elementos que ligam palavras, estabelecendo relações de sentido. Apresente exemplos de frases com diferentes preposições e seus significados. Utilize um jogo para fixar o aprendizado, como um caça-palavras ou um jogo da memória com preposições e seus usos. Proponha a produção de frases e pequenos textos utilizando as preposições aprendidas. Corrija as atividades em conjunto, explicando as dúvidas e reforçando o conceito. Para casa, solicite que os alunos procurem exemplos de preposições em textos diversos (jornais, revistas, livros) e anotem em seus cadernos."
+        },
+        {
+          "componente": "Matemática",
+          "tema_especifico": "frações",
+          "eixo_tematico": "Números; Álgebra; Geometria; Grandezas e Medidas; Probabilidade e Estatística.",
+          "habilidades": "EF05MA03; EF05MA04; EF05MA05; EF05MA06",
+          "objeto_conhecimento": "Números racionais; Operações com números racionais; Representações fracionárias.",
+          "rotina_detalhada": "Inicie a aula com uma atividade lúdica para introduzir o conceito de frações, como dividir uma pizza ou um bolo em partes iguais. Apresente as diferentes representações de frações (desenho, número, escrita). Explique os termos de uma fração (numerador e denominador) e seus significados. Utilize materiais concretos, como barras de frações ou círculos de frações, para facilitar a compreensão. Proponha exercícios de comparação e ordenação de frações. Divida a turma em grupos e peça para cada grupo criar um problema envolvendo frações e resolvê-lo. Corrija os problemas em conjunto, explicando as dúvidas e reforçando o conceito. Finalize a aula com um jogo de frações para fixar o aprendizado."
+        }
+      ],
+      "terca": [],
+      "quarta": [],
+      "quinta": [],
+      "sexta": [],
+      "sabado": []
+    },
+    "data_criacao": "2025-10-19T17:57:19.360Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 12,
+  "fields": {
+    "autor": 1,
+    "componente": null,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "Plano Semanal Detalhado - 5º Ano - Ensino Fundamental",
+    "conteudo_gerado": {
+      "metodologia": "A semana será pautada em metodologias ativas, com foco na participação dos alunos e na construção do conhecimento de forma colaborativa. Serão utilizados momentos de discussão em grupo, resolução de problemas, atividades práticas e lúdicas. A ludicidade será explorada como ferramenta para engajar os alunos e tornar o aprendizado mais significativo, especialmente considerando a ausência de direcionamento temático específico.",
+      "recursos_didaticos": [
+        "Livro didático",
+        "Materiais impressos",
+        "Recursos audiovisuais (projetor, vídeos)",
+        "Jogos e materiais lúdicos",
+        "Materiais de papelaria (lápis, borracha, canetas)",
+        "Cartolinas e marcadores",
+        "Internet (para pesquisa e atividades online)"
+      ],
+      "avaliacao": "A avaliação será diagnóstica e formativa, contínua e processual. Serão considerados a participação nas atividades, o envolvimento nas discussões, a resolução de problemas e a produção de trabalhos. Serão utilizados instrumentos como observação, registro, autoavaliação e avaliação entre pares. Ao final da semana, será realizada uma atividade de síntese para verificar a aprendizagem dos conteúdos abordados de forma geral, aproveitando a liberdade dada pela ausência de temas específicos.",
+      "segunda": [],
+      "terca": [],
+      "quarta": [],
+      "quinta": [],
+      "sexta": [],
+      "sabado": []
+    },
+    "data_criacao": "2025-10-19T17:58:51.106Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 13,
+  "fields": {
+    "autor": 1,
+    "componente": null,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "Plano Semanal Detalhado - 5º Ano - Ensino Fundamental",
+    "conteudo_gerado": {
+      "metodologia": "A semana será pautada por uma abordagem investigativa e colaborativa, incentivando a participação ativa dos alunos em todas as etapas. Serão utilizados momentos de discussão em grupo, atividades práticas e a resolução de problemas contextualizados, sempre buscando a conexão com o cotidiano dos alunos. A mediação do professor será constante, promovendo a reflexão e o desenvolvimento do pensamento crítico.",
+      "recursos_didaticos": [
+        "Livros didáticos",
+        "Materiais manipuláveis (blocos lógicos, ábaco, etc.)",
+        "Recursos audiovisuais (vídeos, imagens)",
+        "Internet",
+        "Cartolinas, canetas hidrográficas, tesouras, cola",
+        "Mapas, globos terrestres",
+        "Jogos educativos",
+        "Instrumentos musicais simples (flauta, chocalho)"
+      ],
+      "avaliacao": "A avaliação será diagnóstica e formativa, realizada ao longo de toda a semana através da observação da participação dos alunos nas atividades, da análise das produções individuais e em grupo, e da aplicação de instrumentos avaliativos diversificados, como questionários, rodas de conversa e registros reflexivos. O foco será o acompanhamento do processo de aprendizagem de cada aluno, identificando suas dificuldades e potencialidades, e promovendo a intervenção pedagógica adequada.",
+      "segunda": [],
+      "terca": [],
+      "quarta": [],
+      "quinta": [],
+      "sexta": [],
+      "sabado": []
+    },
+    "data_criacao": "2025-10-19T17:59:51.309Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 14,
+  "fields": {
+    "autor": 1,
+    "componente": null,
+    "serie": "1º Ano - Ensino Fundamental",
+    "tema_aula": "Plano Semanal Detalhado - 1º Ano - Ensino Fundamental",
+    "conteudo_gerado": {
+      "metodologia": "A semana será dedicada à adaptação dos alunos ao ambiente escolar, desenvolvimento da socialização e estabelecimento de rotinas. As atividades priorizarão a ludicidade, a exploração sensorial e a oralidade, promovendo a integração e o acolhimento. Serão utilizados jogos, brincadeiras, músicas e histórias para facilitar a aprendizagem e o desenvolvimento das habilidades iniciais.",
+      "recursos_didaticos": [
+        "Livros de literatura infantil",
+        "Materiais de arte (lápis de cor, giz de cera, tinta)",
+        "Massinha de modelar",
+        "Sucatas",
+        "Instrumentos musicais simples (chocalhos, tambores)",
+        "Jogos de encaixe",
+        "Quebra-cabeças",
+        "Bolas",
+        "Colchonetes",
+        "Aparelho de som"
+      ],
+      "avaliacao": "A avaliação será diagnóstica e formativa, focada na observação do desenvolvimento individual de cada aluno ao longo da semana. Serão considerados aspectos como a participação nas atividades, a interação com os colegas, a capacidade de seguir instruções, a autonomia e a expressão oral. Registros descritivos serão utilizados para documentar o progresso de cada criança, identificando suas necessidades e potencialidades.",
+      "segunda": [],
+      "terca": [],
+      "quarta": [],
+      "quinta": [],
+      "sexta": [],
+      "sabado": []
+    },
+    "data_criacao": "2025-10-19T18:02:20.035Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 15,
+  "fields": {
+    "autor": 1,
+    "componente": 2,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "Plano Semanal Detalhado - 5º Ano - Ensino Fundamental",
+    "conteudo_gerado": {
+      "metodologia": "A semana será pautada em metodologias ativas, incentivando a participação dos alunos, a exploração de diferentes materiais e a construção do conhecimento de forma colaborativa. Serão utilizados momentos de exposição dialogada, atividades práticas individuais e em grupo, jogos e rodas de conversa para promover a interação e o engajamento.",
+      "recursos_didaticos": [
+        "Livro didático",
+        "Materiais para desenho e pintura (papel, lápis de cor, canetinhas, tintas)",
+        "Recortes de revistas e jornais",
+        "Cola",
+        "Tesoura sem ponta",
+        "Materiais manipuláveis para frações (barras de frações, círculos fracionários)",
+        "Projetor (se disponível)",
+        "Computador com acesso à internet (se disponível)",
+        "Cartolinas",
+        "Pincéis atômicos"
+      ],
+      "avaliacao": "A avaliação será contínua e formativa, considerando a participação dos alunos nas atividades propostas, o desenvolvimento de suas habilidades e a compreensão dos conceitos abordados. Serão utilizados instrumentos como observação, registro das atividades, produção de trabalhos individuais e em grupo e autoavaliação.",
+      "segunda": [],
+      "terca": [
+        {
+          "componente": "Artes",
+          "tema_especifico": "artes abstratas",
+          "eixo_tematico": "Materialidades, Processos e Técnicas; Relação entre Arte.",
+          "habilidades": "RO.EF05AR02; RO.EF05AR04; RO.EF05AR05",
+          "objeto_conhecimento": "Elementos constitutivos das artes visuais; Experimentação e criação em artes visuais.",
+          "rotina_detalhada": "1. Iniciar a aula com uma roda de conversa sobre o que os alunos entendem por arte abstrata. Apresentar imagens de obras de arte abstrata de diferentes artistas (Kandinsky, Mondrian, Miró) utilizando um projetor (se disponível) ou impressões. 2. Promover uma discussão sobre as características da arte abstrata (cores, formas, linhas, texturas, ausência de representação da realidade). 3. Propor uma atividade prática: cada aluno criará sua própria obra de arte abstrata utilizando diferentes materiais (lápis de cor, canetinhas, tintas, recortes de revistas e jornais). 4. Ao final, cada aluno apresentará sua obra para a turma, explicando o que o inspirou e quais materiais utilizou. 5. Exposição dos trabalhos em um mural na sala de aula."
+        },
+        {
+          "componente": "Língua Portuguesa",
+          "tema_especifico": "artigos",
+          "eixo_tematico": "Leitura; Escrita; Oralidade.",
+          "habilidades": "RO.EF05LP03; RO.EF05LP04; RO.EF05LP06",
+          "objeto_conhecimento": "Artigos definidos e indefinidos; Concordância nominal.",
+          "rotina_detalhada": "1. Iniciar a aula com a leitura de um texto curto e interessante. 2. Identificar e sublinhar os artigos presentes no texto. 3. Explicar a função dos artigos definidos (o, a, os, as) e indefinidos (um, uma, uns, umas), exemplificando com frases do texto. 4. Apresentar regras básicas de concordância nominal entre artigos e substantivos. 5. Propor atividades de fixação: completar frases com artigos adequados, identificar o tipo de artigo em diferentes frases, criar frases utilizando artigos definidos e indefinidos. 6. Correção coletiva das atividades, com discussão das dúvidas e dificuldades dos alunos. 7. Propor a produção de um texto curto utilizando corretamente os artigos."
+        },
+        {
+          "componente": "Matemática",
+          "tema_especifico": "frações",
+          "eixo_tematico": "Números; Grandezas e Medidas.",
+          "habilidades": "RO.EF05MA03; RO.EF05MA04; RO.EF05MA05",
+          "objeto_conhecimento": "Conceito de fração; Representação fracionária; Frações equivalentes.",
+          "rotina_detalhada": "1. Iniciar a aula retomando o conceito de fração, utilizando materiais manipuláveis (barras de frações, círculos fracionários). 2. Representar frações graficamente e numericamente. 3. Explorar o conceito de frações equivalentes, utilizando materiais manipuláveis e representações visuais. 4. Propor atividades práticas: comparar frações, identificar frações equivalentes, resolver problemas simples envolvendo frações. 5. Utilizar jogos (se disponíveis) para tornar o aprendizado mais lúdico e interessante. 6. Correção coletiva das atividades, com discussão das dúvidas e dificuldades dos alunos. 7. Propor a criação de um mural com representações de frações equivalentes."
+        }
+      ],
+      "quarta": [],
+      "quinta": [],
+      "sexta": [],
+      "sabado": []
+    },
+    "data_criacao": "2025-10-19T18:04:30.250Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 16,
+  "fields": {
+    "autor": 1,
+    "componente": 12,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "Plano Semanal Consolidado - 5º Ano - Ensino Fundamental",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "SOC: Indivíduos e grupos sociais.",
+        "habilidades": "SOC: RO-EF05SO01: Identificar e analisar a influência de diferentes grupos sociais na formação da identidade individual.",
+        "objeto_conhecimento": "SOC: Relações entre indivíduos e grupos; Formação da identidade.",
+        "rotina": "Acolhida.\nSOC: Roda de conversa sobre a importância dos grupos sociais.\nSOC: Atividade de identificação dos grupos a que pertencem.\nDiscussão em grupo e registro no caderno."
+      },
+      "terca": {
+        "eixo_tematico": "",
+        "habilidades": "",
+        "objeto_conhecimento": "",
+        "rotina": "Acolhida. Atividades de reforço. Intervalo. Atividades complementares. Fechamento."
+      },
+      "quarta": {
+        "eixo_tematico": "",
+        "habilidades": "",
+        "objeto_conhecimento": "",
+        "rotina": "Acolhida. Atividades de reforço. Intervalo. Atividades complementares. Fechamento."
+      },
+      "quinta": {
+        "eixo_tematico": "",
+        "habilidades": "",
+        "objeto_conhecimento": "",
+        "rotina": "Acolhida. Atividades de reforço. Intervalo. Atividades complementares. Fechamento."
+      },
+      "sexta": {
+        "eixo_tematico": "",
+        "habilidades": "",
+        "objeto_conhecimento": "",
+        "rotina": "Acolhida. Atividades de reforço. Intervalo. Atividades complementares. Fechamento."
+      },
+      "sabado": {
+        "eixo_tematico": "",
+        "habilidades": "",
+        "objeto_conhecimento": "",
+        "rotina": "Acolhida. Atividades de reforço. Intervalo. Atividades complementares. Fechamento."
+      },
+      "metodologia": "Aula expositiva dialogada, atividades em grupo e individuais, pesquisa.",
+      "recursos_didaticos": "Livro didático, caderno, lápis, borracha, internet, materiais impressos.",
+      "avaliacao": "Observação da participação e envolvimento dos alunos, análise das atividades realizadas e registros no caderno."
+    },
+    "data_criacao": "2025-10-19T18:14:36.433Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 17,
+  "fields": {
+    "autor": 1,
+    "componente": 2,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "Plano Semanal Consolidado - 5º Ano - Ensino Fundamental",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Materialidades\nSistemas da Língua\nNúmeros",
+        "habilidades": "RO-EF05AR01\nRO-EF05LP01\nRO-EF05MA01",
+        "objeto_conhecimento": "ART: Elementos da linguagem\nLP: Variação linguística\nMA: Sistemas de numeração",
+        "rotina": "Acolhida.\nLeitura diária.\nAtividade de Artes (expressão).\nAtividade de Língua Portuguesa (gramática).\nAtividade de Matemática (números)."
+      },
+      "terca": {},
+      "quarta": {},
+      "quinta": {},
+      "sexta": {},
+      "sabado": {},
+      "metodologia": "Aula expositiva dialogada, atividades práticas e resolução de problemas.",
+      "recursos_didaticos": "Livro didático, materiais artísticos, jogos, quadro branco.",
+      "avaliacao": "Observação, participação, atividades individuais e em grupo."
+    },
+    "data_criacao": "2025-10-19T18:31:24.747Z"
+  }
+},
+{
+  "model": "curriculo.planodeaula",
+  "pk": 18,
+  "fields": {
+    "autor": 1,
+    "componente": 12,
+    "serie": "5º Ano - Ensino Fundamental",
+    "tema_aula": "Plano Semanal Consolidado - 5º Ano - Ensino Fundamental",
+    "conteudo_gerado": {
+      "segunda": {
+        "eixo_tematico": "Formas de pensar e fazer\nLinguagens",
+        "habilidades": "EF05LP01\nEF05LP03\nEF05MA06\nEF05SOC01",
+        "objeto_conhecimento": "LP: Concordância verbal\nLP: Ortografia\nMA: Frações equivalentes\nSOC: Cultura e sociedade",
+        "rotina": "Acolhida e revisão da aula anterior.\nDiscussão sobre concordância verbal com exemplos.\nExercícios de fixação sobre frações.\nRoda de conversa sobre diversidade cultural.\nCorreção e feedback."
+      },
+      "terca": {},
+      "quarta": {},
+      "quinta": {},
+      "sexta": {},
+      "sabado": {},
+      "metodologia": "Aula expositiva dialogada, atividades em grupo e individuais, resolução de problemas.",
+      "recursos_didaticos": "Livro didático, quadro branco, canetas, materiais impressos, jogos educativos.",
+      "avaliacao": "Observação participante, análise das produções dos alunos, aplicação de atividades avaliativas."
+    },
+    "data_criacao": "2025-10-19T18:35:44.433Z"
+  }
+},
+{
+  "model": "curriculo.perfilprofessor",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "nome_completo": "Yasmin Herreira",
+    "escola": "SAUL BENNESBY",
+    "turma_padrao": "9º ano",
+    "turno_padrao": "2 B",
+    "duracao_padrao": "4 horas",
+    "espaco_padrao": "Sala e pátio escolar"
+  }
+}
+]

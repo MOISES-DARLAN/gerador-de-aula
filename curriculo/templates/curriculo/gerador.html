@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plano Mestre - Gerador RCRO</title>
+    <title>Plano Mestre - Gerador Detalhado RCRO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #121212; --main-bg: #1E1E1E; --text-color: #EAEAEA;
-            --text-light: #A0A0A0; --border-color: #333333; --accent-color: #28a745;
-            --accent-hover: #218838; --danger-bg: #fceded; --danger-text: #6b1e25;
-            --danger-border: #f7d0d4;
+        :root { /* Paleta Dark Mode */
+             --bg-color: #121212; --main-bg: #1E1E1E; --text-color: #EAEAEA;
+             --text-light: #A0A0A0; --border-color: #333333; --accent-color: #28a745;
+             --accent-hover: #218838; --danger-bg: #fceded; --danger-text: #6b1e25;
+             --danger-border: #f7d0d4; --secondary-color: #444; --secondary-hover: #555;
         }
         body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg-color); color: var(--text-color); }
         .header { background-color: var(--main-bg); color: var(--text-color); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
         .header .logo { font-size: 1.5rem; font-weight: 600; }
         .header .user-menu a { color: var(--text-light); text-decoration: none; margin-left: 1.5rem; font-weight: 500; }
-        .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
-        .card { background-color: var(--main-bg); border: 1px solid var(--border-color); border-radius: 0; padding: 2rem 2.5rem; }
+        .container { max-width: 1100px; margin: 3rem auto; padding: 0 2rem; }
+        .card { background-color: var(--main-bg); border: 1px solid var(--border-color); border-radius: 0; padding: 2rem 2.5rem; margin-bottom: 2rem;}
         .card h2 { margin-top: 0; color: var(--text-color); font-weight: 600; font-size: 1.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
-        .card p { color: var(--text-light); line-height: 1.6; }
-        .form-group { margin: 1.5rem 0; display: flex; flex-direction: column; gap: 8px; }
+        .card > p { color: var(--text-light); line-height: 1.6; }
+
+        .form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 8px; }
         .form-group label { font-weight: 500; font-size: 0.9rem; color: var(--text-light); }
         .form-input, .form-textarea {
             width: 100%; padding: 14px; font-size: 1rem; font-family: inherit;
@@ -31,13 +32,73 @@
         }
         .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-color); background-color: var(--main-bg); }
         .form-textarea { resize: vertical; }
-        .submit-button { width: 100%; padding: 16px; font-size: 1.1rem; font-weight: 600; border-radius: 0; border: none; background-color: var(--accent-color); color: var(--main-bg); cursor: pointer; transition: background-color 0.2s; margin-top: 1rem; }
+
+        /* Estilo para as seções dos dias */
+        .day-section {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: #2a2a2a; /* Fundo um pouco diferente para dias */
+        }
+        .day-section h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-weight: 600;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .component-entry { /* Bloco para um par componente+tema */
+            display: flex;
+            align-items: flex-end; /* Alinha botão remover na base */
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .component-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .component-entry .form-group {
+            margin-bottom: 0; /* Remove margem extra */
+            flex-grow: 1; /* Ocupa espaço disponível */
+        }
+        .component-entry .remove-btn {
+             padding: 10px 12px;
+             font-size: 0.9rem;
+             background-color: var(--secondary-color);
+             color: var(--text-light);
+             border: none;
+             cursor: pointer;
+             height: 48px; /* Alinha altura com inputs */
+             margin-bottom: 0; /* Alinha na base */
+        }
+        .component-entry .remove-btn:hover { background-color: var(--secondary-hover); color: var(--text-color); }
+
+        .add-component-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .add-component-btn:hover { background-color: var(--secondary-hover); }
+
+        .submit-button { /* Botão principal de gerar */
+            width: 100%; padding: 16px; font-size: 1.1rem; font-weight: 600; border-radius: 0; border: none;
+            background-color: var(--accent-color); color: var(--main-bg); cursor: pointer;
+            transition: background-color 0.2s; margin-top: 2rem;
+        }
         .submit-button:hover { background-color: var(--accent-hover); }
-        .advanced-options { border-top: 1px dashed var(--border-color); margin-top: 2rem; padding-top: 1rem; }
-        .advanced-options h3 { color: var(--text-light); font-weight: 500; font-size: 1.1rem; margin-top: 0; }
         .error-box { padding: 15px; background-color: var(--danger-bg); color: var(--danger-text); border: 1px solid var(--danger-border); border-radius: 0; margin-bottom: 20px; white-space: pre-wrap; }
         .error-box strong { font-size: 1.1em; }
-        .error-box p { font-family: 'Courier New', Courier, monospace; font-size: 0.9em; margin-top: 10px; color: var(--danger-text); }
+        .error-box p { font-family: 'Courier New', monospace; font-size: 0.9em; margin-top: 10px; color: var(--danger-text); }
     </style>
 </head>
 <body>
@@ -51,41 +112,120 @@
         </div>
     </header>
     <main class="container">
-        <div class="card">
-            <h2>Gerador de Plano de Aula (RCRO)</h2>
-            <p>Selecione o componente curricular, a série, o tema geral e adicione contexto se desejar.</p>
+        <form method="post" id="gerador-form">
+            {% csrf_token %}
 
-            {% if erro_ia %} <div class="error-box"> <strong>Ocorreu um erro:</strong> <p>{{ erro_ia }}</p> </div> {% endif %}
+            {{ form.componentes_temas_json }}
 
-            <form method="post">
-                {% csrf_token %}
+            <div class="card">
+                <h2>Gerador Detalhado (RCRO)</h2>
+                <p>Selecione a série/ano, adicione os componentes curriculares e seus temas para cada dia da semana.</p>
 
-                <div class="form-group">
-                    <label for="{{ form.componente_curricular.id_for_label }}">{{ form.componente_curricular.label }}</label>
-                    {{ form.componente_curricular }}
-                </div>
+                {% if erro_ia %} <div class="error-box"> <strong>Erro:</strong> <p>{{ erro_ia }}</p> </div> {% endif %}
 
                 <div class="form-group">
                     <label for="{{ form.serie.id_for_label }}">{{ form.serie.label }}</label>
                     {{ form.serie }}
                 </div>
 
+                {% for dia_id, dia_nome in dias_semana.items %}
+                <div class="day-section" id="section-{{ dia_id }}">
+                    <h3>{{ dia_nome }}</h3>
+                    <div class="components-list">
+                        </div>
+                    <button type="button" class="add-component-btn" data-day="{{ dia_id }}">Adicionar Componente</button>
+                </div>
+                {% endfor %}
+
+                <div class="form-group" style="margin-top: 2rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
+                    <label for="{{ form.contexto.id_for_label }}">{{ form.contexto.label }}</label>
+                    {{ form.contexto }}
+                </div>
+
+                <button type="submit" class="submit-button">Gerar Plano Detalhado com IA</button>
+            </div>
+        </form>
+
+        <template id="component-entry-template">
+            <div class="component-entry">
                 <div class="form-group">
-                    <label for="{{ form.tema_aula.id_for_label }}">{{ form.tema_aula.label }}</label>
-                    {{ form.tema_aula }}
+                    <label for="componente_{day}_{index}">Componente</label>
+                    <select name="componente_{day}_{index}" id="componente_{day}_{index}" class="form-input componente-select">
+                        <option value="" disabled selected>Selecione...</option>
+                        {% for comp in todos_componentes %}
+                        <option value="{{ comp.id }}">{{ comp.nome }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-
-                <div class="advanced-options">
-                    <h3>Contexto Adicional (Opcional)</h3>
-                    <div class="form-group">
-                        <label for="{{ form.contexto.id_for_label }}">{{ form.contexto.label }}</label>
-                        {{ form.contexto }}
-                    </div>
+                <div class="form-group">
+                    <label for="tema_{day}_{index}">Tema Específico</label>
+                    <input type="text" name="tema_{day}_{index}" id="tema_{day}_{index}" class="form-input tema-input" placeholder="Tema para este componente">
                 </div>
-
-                <button type="submit" class="submit-button">Gerar Plano de Aula com IA</button>
-            </form>
-        </div>
+                <button type="button" class="remove-btn">Remover</button>
+            </div>
+        </template>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('gerador-form');
+            const hiddenJsonInput = document.getElementById('id_componentes_temas_json');
+            const template = document.getElementById('component-entry-template');
+
+            // Adicionar componente
+            document.querySelectorAll('.add-component-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const dayId = this.getAttribute('data-day');
+                    const componentsList = document.querySelector(`#section-${dayId} .components-list`);
+                    const index = componentsList.children.length; // Novo índice único
+
+                    const clone = template.content.cloneNode(true);
+
+                    // Atualiza IDs e names para serem únicos
+                    clone.querySelector('select').id = `componente_${dayId}_${index}`;
+                    clone.querySelector('select').name = `componente_${dayId}_${index}`;
+                    clone.querySelector('input').id = `tema_${dayId}_${index}`;
+                    clone.querySelector('input').name = `tema_${dayId}_${index}`;
+
+                    // Adiciona evento de remoção ao botão do clone
+                    clone.querySelector('.remove-btn').addEventListener('click', function(e) {
+                        e.target.closest('.component-entry').remove();
+                    });
+
+                    componentsList.appendChild(clone);
+                });
+            });
+
+            // Coletar dados e montar JSON antes de submeter o formulário
+            form.addEventListener('submit', function(event) {
+                const data = {
+                    segunda: [], terca: [], quarta: [], quinta: [], sexta: [], sabado: []
+                };
+                const dias = ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+
+                dias.forEach(dayId => {
+                    const entries = document.querySelectorAll(`#section-${dayId} .component-entry`);
+                    entries.forEach(entry => {
+                        const componenteSelect = entry.querySelector('.componente-select');
+                        const temaInput = entry.querySelector('.tema-input');
+                        // Só adiciona se um componente foi selecionado
+                        if (componenteSelect.value) {
+                            data[dayId].push({
+                                componente_id: componenteSelect.value,
+                                // Opcional: enviar o nome também pode ser útil
+                                // componente_nome: componenteSelect.options[componenteSelect.selectedIndex].text,
+                                tema: temaInput.value || "" // Envia tema vazio se não preenchido
+                            });
+                        }
+                    });
+                });
+
+                // Coloca o JSON no campo oculto
+                hiddenJsonInput.value = JSON.stringify(data);
+
+                // Não precisa de event.preventDefault(); deixa o formulário ser submetido
+            });
+        });
+    </script>
 </body>
 </html>

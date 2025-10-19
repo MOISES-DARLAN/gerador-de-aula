@@ -1,3 +1,5 @@
+# curriculo/views.py (Revertido para estrutura simples de contexto)
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -7,12 +9,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from weasyprint import HTML
 import datetime
+import json
 
 from .forms import (
     GeradorPlanoForm, PerfilProfessorForm,
     AreaForm, ComponenteForm
 )
-from .ia_service import gerar_plano_de_aula_com_ia  # Importa a versão revertida que faremos a seguir
+# Certifique-se que ia_service está na versão CONSOLIDADA
+from .ia_service import gerar_plano_de_aula_com_ia
 from .models import PlanoDeAula, PerfilProfessor, AreaDoConhecimento, ComponenteCurricular
 
 
@@ -67,68 +71,119 @@ def perfil_view(request):
     return render(request, 'curriculo/perfil.html', context)
 
 
-# --- View do Gerador (REVERTIDA) ---
+# --- View do Gerador (Adaptada para enviar estrutura à IA consolidada) ---
 @login_required(login_url='login')
 def gerador_view(request):
-    form = GeradorPlanoForm(request.POST or None)
     erro_ia = None
+    if request.method == 'POST':
+        form = GeradorPlanoForm(request.POST)
+        if form.is_valid():
+            json_data_str = form.cleaned_data.get('componentes_temas_json', '{}')
+            try:
+                componentes_temas_por_dia = json.loads(json_data_str)
+            except json.JSONDecodeError:
+                messages.error(request, "Erro ao processar os componentes selecionados.")
+                componentes_temas_por_dia = {}
 
-    if request.method == 'POST' and form.is_valid():
-        # Coleta apenas UM componente
-        componente = form.cleaned_data['componente_curricular']
+            serie_valor = form.cleaned_data['serie']
+            serie_texto = dict(form.fields['serie'].choices)[serie_valor]
+            contexto = form.cleaned_data['contexto']
 
-        # Coleta os outros dados
-        serie_valor = form.cleaned_data['serie']
-        serie_texto = dict(form.fields['serie'].choices)[serie_valor]
-        tema = form.cleaned_data['tema_aula']
-        contexto = form.cleaned_data['contexto']
+            # Prepara a estrutura para enviar à IA (ainda precisamos saber quais componentes foram selecionados)
+            componentes_objetos_por_dia = {}
+            componentes_selecionados_ids = set()
+            for dia, items in componentes_temas_por_dia.items():
+                componentes_objetos_por_dia[dia] = []
+                for item in items:
+                    try:
+                        comp_id = int(item['componente_id'])
+                        componentes_selecionados_ids.add(comp_id)
+                    except (ValueError, KeyError):
+                        continue
 
-        # Envia UM componente para a IA (a função ia_service será revertida também)
-        plano_data_dict = gerar_plano_de_aula_com_ia(componente, serie_texto, tema, contexto)
+            componentes_db = ComponenteCurricular.objects.in_bulk(componentes_selecionados_ids)
 
-        if "erro" not in plano_data_dict:
-            plano_salvo = PlanoDeAula.objects.create(
-                autor=request.user,
-                componente=componente,  # Salva o componente único
-                serie=serie_texto,
-                tema_aula=tema,
-                conteudo_gerado=plano_data_dict  # Salva o JSON simples
-            )
-            return redirect('plano_detalhe', plano_id=plano_salvo.id)
-        else:
-            erro_ia = plano_data_dict.get('erro', 'Um erro desconhecido ocorreu na IA.')
+            componentes_para_ia = {}  # IA agora só precisa saber os NOMES para consolidar
+            for dia, items in componentes_temas_por_dia.items():
+                componentes_para_ia[dia] = []
+                for item in items:
+                    try:
+                        comp_id = int(item['componente_id'])
+                        comp_obj = componentes_db.get(comp_id)
+                        if comp_obj:
+                            # A IA consolidada só precisa do objeto componente
+                            # O 'tema' específico não é mais usado diretamente pela IA consolidada, mas pode ser útil no futuro
+                            componentes_para_ia[dia].append({
+                                'componente': comp_obj,
+                                'tema': item.get('tema', '')
+                            })
+                    except (ValueError, KeyError):
+                        continue
 
-    context = {'form': form, 'erro_ia': erro_ia}
+            # Chama a IA CONSOLIDADA
+            plano_data_dict = gerar_plano_de_aula_com_ia(componentes_para_ia, serie_texto, contexto)
+
+            if plano_data_dict and "erro" not in plano_data_dict:
+                primeiro_componente = None
+                for dia in ['segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado']:
+                    if componentes_para_ia.get(dia):
+                        primeiro_componente = componentes_para_ia[dia][0]['componente']
+                        break
+
+                plano_salvo = PlanoDeAula.objects.create(
+                    autor=request.user,
+                    componente=primeiro_componente,
+                    serie=serie_texto,
+                    tema_aula=f"Plano Semanal Consolidado - {serie_texto}",  # Ajusta o tema
+                    conteudo_gerado=plano_data_dict  # Salva o JSON simples retornado
+                )
+                return redirect('plano_detalhe', plano_id=plano_salvo.id)
+            else:
+                erro_ia = plano_data_dict.get('erro', 'Um erro desconhecido ocorreu na IA.') if isinstance(
+                    plano_data_dict, dict) else 'Erro inesperado na resposta da IA.'
+
+    else:  # Método GET
+        form = GeradorPlanoForm()
+
+    todos_componentes = ComponenteCurricular.objects.all().order_by('nome')
+    dias_semana = {  # Ainda necessário para o template do gerador
+        'segunda': 'Segunda-feira', 'terca': 'Terça-feira', 'quarta': 'Quarta-feira',
+        'quinta': 'Quinta-feira', 'sexta': 'Sexta-feira', 'sabado': 'Sábado'
+    }
+    context = {
+        'form': form, 'erro_ia': erro_ia,
+        'todos_componentes': todos_componentes, 'dias_semana': dias_semana
+    }
     return render(request, 'curriculo/gerador.html', context)
 
 
-# --- View de Detalhes (REVERTIDA - contexto simplificado) ---
+# --- View de Detalhes (REVERTIDA para contexto simples) ---
 @login_required(login_url='login')
 def plano_detalhe_view(request, plano_id):
     try:
         plano = PlanoDeAula.objects.get(id=plano_id, autor=request.user)
-        # Contexto volta a ser simples, sem dia_map
+        # REMOVE dia_map do contexto
         context = {'plano': plano}
-        return render(request, 'curriculo/plano_detalhe.html', context)
+        return render(request, 'curriculo/plano_detalhe.html', context)  # Usa o template revertido
     except PlanoDeAula.DoesNotExist:
-        messages.error(request, "Plano de aula não encontrado ou você não tem permissão para vê-lo.")
+        messages.error(request, "Plano de aula não encontrado ou você não tem permissão.")
         return redirect('gerador')
 
 
-# --- View do PDF (REVERTIDA - contexto simplificado) ---
+# --- View do PDF (REVERTIDA para contexto simples) ---
 @login_required(login_url='login')
 def gerar_pdf_view(request, plano_id):
     try:
         plano = PlanoDeAula.objects.get(id=plano_id, autor=request.user)
         perfil = request.user.perfil
-        # Contexto volta a ser simples, sem dia_map
+        # REMOVE dia_map do contexto
         context = {
             'plano': plano,
             'hoje': datetime.date.today(),
             'perfil': perfil,
             'request': request
         }
-        html_string = render_to_string('curriculo/plano_pdf.html', context)
+        html_string = render_to_string('curriculo/plano_pdf.html', context)  # Usa o template revertido
         pdf = HTML(string=html_string, base_url=request.build_absolute_uri()).write_pdf()
         response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = f'attachment; filename="plano_de_aula_{plano.id}.pdf"'
@@ -140,17 +195,15 @@ def gerar_pdf_view(request, plano_id):
 
 
 # --- Views CRUD (sem alterações) ---
-# ... (código das views CRUD existente) ...
+# ... (código CRUD existente) ...
 @login_required(login_url='login')
 def listar_areas(request):
-    # ... (código existente) ...
     areas = AreaDoConhecimento.objects.all().order_by('nome')
     return render(request, 'curriculo/crud/listar_areas.html', {'areas': areas})
 
 
 @login_required(login_url='login')
 def criar_area(request):
-    # ... (código existente) ...
     if request.method == 'POST':
         form = AreaForm(request.POST)
         if form.is_valid():
@@ -164,7 +217,6 @@ def criar_area(request):
 
 @login_required(login_url='login')
 def editar_area(request, pk):
-    # ... (código existente) ...
     area = get_object_or_404(AreaDoConhecimento, pk=pk)
     if request.method == 'POST':
         form = AreaForm(request.POST, instance=area)
@@ -179,7 +231,6 @@ def editar_area(request, pk):
 
 @login_required(login_url='login')
 def deletar_area(request, pk):
-    # ... (código existente) ...
     area = get_object_or_404(AreaDoConhecimento, pk=pk)
     if request.method == 'POST':
         try:
@@ -194,14 +245,12 @@ def deletar_area(request, pk):
 
 @login_required(login_url='login')
 def listar_componentes(request):
-    # ... (código existente) ...
     componentes = ComponenteCurricular.objects.select_related('area').all().order_by('nome')
     return render(request, 'curriculo/crud/listar_componentes.html', {'componentes': componentes})
 
 
 @login_required(login_url='login')
 def criar_componente(request):
-    # ... (código existente) ...
     if request.method == 'POST':
         form = ComponenteForm(request.POST)
         if form.is_valid():
@@ -216,7 +265,6 @@ def criar_componente(request):
 
 @login_required(login_url='login')
 def editar_componente(request, pk):
-    # ... (código existente) ...
     componente = get_object_or_404(ComponenteCurricular, pk=pk)
     if request.method == 'POST':
         form = ComponenteForm(request.POST, instance=componente)
@@ -232,7 +280,6 @@ def editar_componente(request, pk):
 
 @login_required(login_url='login')
 def deletar_componente(request, pk):
-    # ... (código existente) ...
     componente = get_object_or_404(ComponenteCurricular, pk=pk)
     if request.method == 'POST':
         try:
