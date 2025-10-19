@@ -1,40 +1,64 @@
 import google.generativeai as genai
 from django.conf import settings
-from .models import Habilidade
+import json
 
-def gerar_plano_de_aula_com_ia(componente, serie, tema):
+
+# Função REVERTIDA para receber UM componente
+def gerar_plano_de_aula_com_ia(componente, serie, tema, contexto):
     try:
-        # Configura a API Key a partir das configurações do Django
         genai.configure(api_key=settings.GOOGLE_API_KEY)
 
-        # Busca habilidades da BNCC relacionadas ao componente para enriquecer o prompt
-        habilidades_bncc = Habilidade.objects.filter(componente=componente)
-        lista_habilidades_str = "\n".join([f"- {h.codigo}: {h.descricao}" for h in habilidades_bncc])
+        contexto_professor = contexto if contexto else "Nenhum."
 
-        # Cria o prompt detalhado para a IA
+        # PROMPT REVERTIDO PARA A ESTRUTURA SIMPLES
         prompt = f"""
-        **Instrução:** Você é um especialista em pedagogia e na BNCC do Ensino Médio. Crie um plano de aula detalhado e criativo.
+        **Instrução:** Você é um especialista em pedagogia e no **Referencial Curricular de Rondônia (RCRO)**. Sua tarefa é gerar o conteúdo para um plano de oficina semanal completo.
 
-        **Formato de Saída:** Use Markdown para formatação com títulos, listas e negrito. O plano deve conter as seguintes seções:
-        - Título da Aula:
-        - Objetivos de Aprendizagem: (Liste 3 objetivos claros)
-        - Habilidades da BNCC Relacionadas: (Selecione 1 ou 2 códigos mais relevantes da lista abaixo e descreva como serão trabalhados)
-        - Metodologia e Desenvolvimento: (Descreva um roteiro passo a passo: introdução, desenvolvimento com atividades práticas e fechamento)
-        - Recursos Necessários:
-        - Forma de Avaliação:
+        **Formato de Saída OBRIGATÓRIO:** Responda APENAS com um objeto JSON válido, sem nenhum texto ou formatação adicional antes ou depois dele (sem ```json ... ```).
 
-        **Dados da Aula:**
+        **Dados para o Plano de Aula:**
+        - **Tema da Semana:** {tema}
         - **Componente Curricular:** {componente.nome}
         - **Série:** {serie}
-        - **Tema da Aula:** {tema}
+        - **Contexto Adicional do Professor:** {contexto_professor}
 
-        **Lista de Habilidades BNCC Disponíveis para este Componente:**
-        {lista_habilidades_str if lista_habilidades_str else "Nenhuma habilidade específica cadastrada."}
+        **Estrutura JSON de Saída ESPERADA (OBJETO POR DIA):**
+        {{
+          "segunda": {{
+            "eixo_tematico": "Liste os eixos temáticos do RCRO para Segunda-feira.",
+            "habilidades": "Liste os códigos de habilidades do RCRO para Segunda-feira.",
+            "objeto_conhecimento": "Liste os objetos de conhecimento do RCRO para Segunda-feira.",
+            "rotina": "Descreva a rotina para Segunda-feira."
+          }},
+          "terca": {{ "eixo_tematico": "...", "habilidades": "...", "objeto_conhecimento": "...", "rotina": "..." }},
+          "quarta": {{ "eixo_tematico": "...", "habilidades": "...", "objeto_conhecimento": "...", "rotina": "..." }},
+          "quinta": {{ "eixo_tematico": "...", "habilidades": "...", "objeto_conhecimento": "...", "rotina": "..." }},
+          "sexta": {{ "eixo_tematico": "...", "habilidades": "...", "objeto_conhecimento": "...", "rotina": "..." }},
+          "metodologia": "Metodologia geral da semana.",
+          "recursos_didaticos": "Lista de recursos gerais.",
+          "avaliacao": "Descrição da avaliação semanal."
+        }}
         """
 
         model = genai.GenerativeModel('gemini-2.0-flash')
         response = model.generate_content(prompt)
-        return response.text
+
+        cleaned_response = response.text.strip().lstrip('```json').rstrip('```')
+
+        # Validação simples
+        try:
+            parsed_json = json.loads(cleaned_response)
+            dias = ["segunda", "terca", "quarta", "quinta", "sexta"]
+            # Verifica se as chaves dos dias existem e são dicionários (não listas)
+            if not all(isinstance(parsed_json.get(dia), dict) for dia in dias):
+                raise ValueError("Estrutura JSON inválida: Chaves dos dias devem conter objetos.")
+            return parsed_json
+        except (json.JSONDecodeError, ValueError) as e:
+            print(f"Erro ao processar JSON da IA: {e}")
+            print(f"Resposta recebida: {cleaned_response}")
+            return {
+                "erro": f"A resposta da IA não é um JSON válido ou tem estrutura incorreta. Resposta: {cleaned_response}"}
+
     except Exception as e:
         print(f"Ocorreu um erro ao chamar a API do Gemini: {e}")
-        return "Desculpe, ocorreu um erro ao tentar gerar o plano de aula. Verifique sua chave de API e tente novamente."
+        return {"erro": f"Ocorreu um erro na API: {e}"}

@@ -1,0 +1,63 @@
+# Arquivo .gitignore para o projeto Django Plano Mestre
+
+# Ambientes Virtuais
+# Nunca comitar o ambiente virtual
+venv/
+env/
+.venv/
+.env/
+
+# Arquivos de Bytecode e Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Banco de Dados de Desenvolvimento
+# Não comitar o banco de dados SQLite usado localmente
+db.sqlite3
+*.sqlite3
+
+# Arquivos de Segredos e Configuração Local
+# ESSENCIAL: Não comitar o arquivo com a chave de API e outras senhas
+.env
+
+# Arquivos de Mídia Uploadados por Usuários
+# Geralmente não se comita o conteúdo da pasta de mídia
+/media/
+
+# Arquivos Estáticos Coletados
+# A pasta gerada pelo comando collectstatic
+/staticfiles/
+
+# Logs
+*.log
+logs/
+
+# Arquivos de IDEs e Editores
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de Cobertura de Testes
+.coverage
+coverage.xml
+htmlcov/
+
+# Arquivos de Construção e Distribuição do Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Arquivos específicos do WeasyPrint (se houver cache ou logs)
+# (Adicionar aqui se notar arquivos temporários do WeasyPrint)
+
+# Outros arquivos temporários ou de backup
+*~
+*.bak

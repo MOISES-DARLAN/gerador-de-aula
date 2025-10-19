@@ -1,10 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Plano Mestre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212; --main-bg: #1E1E1E; --text-color: #EAEAEA;
+            --text-light: #A0A0A0; --border-color: #333333; --accent-color: #28a745;
+            --accent-hover: #218838; --success-bg: #1a3a24; --success-text: #a6d9b4;
+            --success-border: #2c6a3f;
+        }
+        body { font-family: 'Inter', sans-serif; margin: 0; background-color: var(--bg-color); color: var(--text-color); }
+        .header { background-color: var(--main-bg); color: var(--text-color); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+        .header .logo { font-size: 1.5rem; font-weight: 600; }
+        .header .user-menu a { color: var(--text-light); text-decoration: none; margin-left: 1.5rem; font-weight: 500; transition: color 0.2s; }
+        .header .user-menu a:hover { color: var(--text-color); }
+        .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
+        .card { background-color: var(--main-bg); border: 1px solid var(--border-color); border-radius: 0; padding: 2rem 2.5rem; }
+        .card h2 { margin-top: 0; color: var(--text-color); font-weight: 600; font-size: 1.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+        .form-group { margin: 1.5rem 0; display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-weight: 500; font-size: 0.9rem; color: var(--text-light); }
+        .form-input { width: 100%; padding: 14px; font-size: 1rem; font-family: 'Inter', sans-serif; border: 1px solid var(--border-color); border-radius: 0; box-sizing: border-box; background-color: var(--bg-color); color: var(--text-color); }
+        .form-input:disabled { background-color: #2a2a2a; color: var(--text-light); cursor: not-allowed; }
+        .submit-button { width: 100%; padding: 16px; font-size: 1.1rem; font-weight: 600; border-radius: 0; border: none; background-color: var(--accent-color); color: var(--main-bg); cursor: pointer; transition: background-color 0.2s; margin-top: 1rem; }
+        .submit-button:hover { background-color: var(--accent-hover); }
+        .messages { list-style: none; padding: 0; margin: 0 0 1.5rem 0; }
+        .message.success { padding: 15px; background-color: var(--success-bg); color: var(--success-text); border: 1px solid var(--success-border); border-radius: 0; font-weight: 500; }
+    </style>
 </head>
 <body>
-$END$
+    <header class="header">
+        <div class="logo">Plano Mestre</div>
+        <div class="user-menu">
+            <a href="{% url 'gerador' %}">Gerador de Planos</a>
+            <a href="{% url 'listar_areas' %}">Áreas</a>
+            <a href="{% url 'listar_componentes' %}">Componentes</a>
+            <a href="{% url 'logout' %}">Sair</a>
+        </div>
+    </header>
+    <main class="container">
+        <div class="card">
+            <h2>Meu Perfil</h2>
+            <p>Estas informações serão usadas para preencher automaticamente os cabeçalhos dos seus planos de aula.</p>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="message {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Nome de Usuário (não pode ser alterado)</label>
+                    <input type="text" value="{{ request.user.username }}" class="form-input" disabled>
+                </div>
+
+                <div class="form-group">
+                    {{ form.nome_completo.label_tag }}
+                    {{ form.nome_completo }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.escola.label_tag }}
+                    {{ form.escola }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.turma_padrao.label_tag }}
+                    {{ form.turma_padrao }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.turno_padrao.label_tag }}
+                    {{ form.turno_padrao }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.duracao_padrao.label_tag }}
+                    {{ form.duracao_padrao }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.espaco_padrao.label_tag }}
+                    {{ form.espaco_padrao }}
+                </div>
+                <button type="submit" class="submit-button">Salvar Alterações</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'curriculo/crud/base_crud.html' %}
+
+{% block title %}Gerenciar Componentes Curriculares{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="action-bar">
+        <h1>Componentes Curriculares (Disciplinas)</h1>
+        <a href="{% url 'criar_componente' %}" class="btn btn-primary">Novo Componente</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Área do Conhecimento</th>
+                <th style="width: 20%;">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for componente in componentes %}
+            <tr>
+                <td>{{ componente.nome }}</td>
+                <td>{{ componente.area.nome }}</td>
+                <td class="actions">
+                    <a href="{% url 'editar_componente' componente.pk %}" class="btn btn-secondary">Editar</a>
+                    <form method="post" action="{% url 'deletar_componente' componente.pk %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este componente?');">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum componente curricular cadastrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Aula Semanal - {{ plano.tema_aula }}</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 1.5cm;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 8pt;
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+
+        .page {
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* * CABEÇALHO CORRIGIDO COM FLEXBOX
+         * Isso impede que os textos fiquem sobrepostos.
+         */
+        header {
+            display: flex;
+            justify-content: space-between; /* Alinha os 3 blocos */
+            align-items: flex-start; /* Alinha no topo */
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            height: 90px; /* Altura fixa para o cabeçalho */
+        }
+
+        /* Bloco da Esquerda (Logo) */
+        .header-logo-left {
+            flex-shrink: 0; /* Não encolhe */
+            width: 12px; /* Largura fixa */
+            text-align: left;
+            padding: 50px 0 0 0;
+        }
+
+        .header-logo-rigth {
+            flex-shrink: 0; /* Não encolhe */
+            width: 2cm; /* Largura fixa */
+            text-align: left;
+            padding: 50px 0 0 0;
+        }
+
+        /* Bloco Central (Brasão e Texto) */
+        .header-center {
+    flex-grow: 1;
+    text-align: center; /* A regra "mágica" para PDFs */
+    padding: 10px 15px;
+    margin: 10px
+    /* As 4 linhas abaixo foram removidas:
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 5px;
+    */
+}
+
+        .header-center-text {
+            text-align: center;
+            font-size: 8pt;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+
+        .header-center-text p { margin: 2px 0; padding: 0; }
+
+        /* Bloco da Direita (Logo) */
+        .header-right {
+        padding: 50px 0 0 0;
+            flex-shrink: 0; /* Não encolhe */
+            width: 2cm; /* Largura fixa */
+            justify-content: flex-end;
+
+            text-align: right; /* Alinha o logo à direita */
+        }
+
+        header img {
+            object-fit: contain;
+            max-height: 60px;
+             /* Altura máxima para os logos */
+        }
+        .header-center img {
+    height: 35px; /* Altura fixa para o brasão */
+    width: auto;
+    margin-bottom: 5px; /* Substitui o 'gap' */
+}
+
+        /* * INFO-BLOCK CORRIGIDO COM FLEXBOX
+         * Isso impede "Professor(a)", "Turma:", etc. de se sobreporem.
+         */
+        .info-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 11pt;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            padding: 0 5px;
+            box-sizing: border-box;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .info-block p { margin: 0 10px 0 0; }
+
+        .main-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            font-size: 10pt;
+            font-weight: bold;
+            margin: 100px 0 0px 0;
+            padding: 20px 0 0 0;
+        }
+
+        .lesson-plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+            border: 1px solid #000;
+        }
+
+        .lesson-plan-table thead {
+            display: table-row-group;
+        }
+
+        .lesson-plan-table th,
+        .lesson-plan-table td {
+            border: 1px solid #000;
+            padding: 6px;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+
+        .bold{
+            font-weight: bold;
+        }
+
+        .lesson-plan-table thead th {
+            background-color: #FFFACD;
+            text-align: center;
+            font-size: 11px;
+            padding: 8px 5px;
+            font-weight: bold;
+        }
+
+        .col-semana { width: 14%; text-align: center; font-weight: bold; }
+        .col-eixo { width: 18%; font-weight: bold; }
+        .col-habilidades { width: 12%; font-weight: bold; }
+        .col-rotina { width: 25%; background-color: #FAFAFA; font-weight: bold; }
+        .col-objeto { width: 31%; }
+
+        .footer-row td { background-color: #FFDAB9; }
+        .footer-row td:first-child {
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .footer-row td:last-child { font-size: 10pt; }
+
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            font-size: 12px;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .signature-line {
+            border-top: 1px solid #000;
+            width: 40%;
+            min-width: 250px;
+            padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="header-logo-left">
+                <img src="https://i.imgur.com/7zPImO9.png" alt="Logo SEMED Guajará-Mirim" class="placeholder-logo">
+            </div>
+
+            <div class="header-center">
+                <img src="https://i.imgur.com/TF7Yz48.png" alt="Brasão Prefeitura Guajará-Mirim" class="placeholder-logo">
+
+                <div class="header-center-text">
+                    <p>PREFEITURA MUNICIPAL DE GUAJARÁ-MIRIM</p>
+                    <p>SECRETARIA MUNICIPAL DE EDUCAÇÃO - SEMED ESCOLA MUN. DE EDUC. INF. E ENS. FUND. "JESUS PEREZ" DECRETO DE CRIAÇÃO: Nº: 1.663 DE 22 DE ABRIL DE 1.993.</p>
+                    <p>PARECER DE AUTORIZAÇÃO E FUNCIONAMENTO Nº /CME/2019 RESOLUÇÃO Nº 006/CME/19 AV. ROCHA LEAL, 2214<br>BAIRRO: SANTO ANTÔNIO / GUAJARÁ-MIRIM/RO</p>
+                    <p>EMAIL: <a href="mailto:escolajesusperez@hotmail.com">escolajesusperez@hotmail.com</a></p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                 <img src="https://i.imgur.com/oAotYrR.png" alt="Logo Escola Jesus Perez" class="placeholder-logo">
+
+            </div>
+        </header>
+
+     <main>
+            <h2 class="main-title">PLANEJAMENTO SEMANAL - {{ plano.tema_aula }}</h2>
+            <div class="info-block">
+                <p><strong>Professor(a):</strong> {{ perfil.nome_completo|default:'N/A' }}</p>
+                <p><strong>Turma:</strong> {{ perfil.turma_padrao|default:'N/A' }}</p>
+                <p><strong>Turno:</strong> {{ perfil.turno_padrao|default:'N/A' }}</p>
+                <p><strong>Duração:</strong> {{ perfil.duracao_padrao|default:'N/A' }}</p>
+                <p><strong>Espaço:</strong> {{ perfil.espaco_padrao|default:'N/A' }}</p>
+            </div>
+
+            <table class="lesson-plan-table">
+                <thead>
+                    <tr>
+                        <th class="col-dia">SEMANA</th>
+                        <th class="col-eixo">EIXO TEMÁTICO</th>
+                        <th class="col-habilidades">HABILIDADES</th>
+                        <th class="col-objeto">OBJETO DO CONHECIMENTO</th>
+                        <th class="col-rotina">Rotina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% with plano.conteudo_gerado as plano_dia %}
+                    <tr>
+                        <td class="col-dia">SEGUNDA-FEIRA</td>
+                        <td>{{ plano_dia.segunda.eixo_tematico|linebreaksbr }}</td>
+                        <td>{{ plano_dia.segunda.habilidades|linebreaksbr }}</td>
+                        <td>{{ plano_dia.segunda.objeto_conhecimento|linebreaksbr }}</td>
+                        <td>{{ plano_dia.segunda.rotina|linebreaksbr }}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-dia">TERÇA-FEIRA</td>
+                        <td>{{ plano_dia.terca.eixo_tematico|linebreaksbr }}</td>
+                        <td>{{ plano_dia.terca.habilidades|linebreaksbr }}</td>
+                        <td>{{ plano_dia.terca.objeto_conhecimento|linebreaksbr }}</td>
+                        <td>{{ plano_dia.terca.rotina|linebreaksbr }}</td>
+                    </tr>
+                     <tr>
+                        <td class="col-dia">QUARTA-FEIRA</td>
+                        <td>{{ plano_dia.quarta.eixo_tematico|linebreaksbr }}</td>
+                        <td>{{ plano_dia.quarta.habilidades|linebreaksbr }}</td>
+                        <td>{{ plano_dia.quarta.objeto_conhecimento|linebreaksbr }}</td>
+                        <td>{{ plano_dia.quarta.rotina|linebreaksbr }}</td>
+                    </tr>
+                     <tr>
+                        <td class="col-dia">QUINTA-FEIRA</td>
+                        <td>{{ plano_dia.quinta.eixo_tematico|linebreaksbr }}</td>
+                        <td>{{ plano_dia.quinta.habilidades|linebreaksbr }}</td>
+                        <td>{{ plano_dia.quinta.objeto_conhecimento|linebreaksbr }}</td>
+                        <td>{{ plano_dia.quinta.rotina|linebreaksbr }}</td>
+                    </tr>
+                     <tr>
+                        <td class="col-dia">SEXTA-FEIRA</td>
+                        <td>{{ plano_dia.sexta.eixo_tematico|linebreaksbr }}</td>
+                        <td>{{ plano_dia.sexta.habilidades|linebreaksbr }}</td>
+                        <td>{{ plano_dia.sexta.objeto_conhecimento|linebreaksbr }}</td>
+                        <td>{{ plano_dia.sexta.rotina|linebreaksbr }}</td>
+                    </tr>
+                    {% endwith %}
+
+                    <tr class="footer-row"> <td>METODOLOGIA</td> <td colspan="4">{{ plano.conteudo_gerado.metodologia|linebreaksbr }}</td> </tr>
+                    <tr class="footer-row"> <td>RECURSOS DIDÁTICOS</td> <td colspan="4">{{ plano.conteudo_gerado.recursos_didaticos|linebreaksbr }}</td> </tr>
+                    <tr class="footer-row"> <td>AVALIAÇÃO</td> <td colspan="4">{{ plano.conteudo_gerado.avaliacao|linebreaksbr }}</td> </tr>
+                </tbody>
+            </table>
+            <div class="signatures"> <div class="signature-line"> Supervisão Escolar </div> <div class="signature-line"> Professor(a) </div> </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'curriculo/crud/base_crud.html' %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Confirmar Exclusão</h1>
+    <p>Você tem certeza que deseja excluir o(a) {{ tipo }} "{{ objeto }}"?</p>
+    <p style="color: #dc3545; font-weight: bold;">Esta ação não pode ser desfeita.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sim, Excluir</button>
+        <a href="{% if tipo == 'Área do Conhecimento' %}{% url 'listar_areas' %}{% else %}{% url 'listar_componentes' %}{% endif %}" class="btn btn-secondary" style="margin-left: 10px;">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
